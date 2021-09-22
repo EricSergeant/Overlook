@@ -26,5 +26,15 @@ describe('Booking', () => {
     expect(booking1.date).to.equal(bookings[0].date);
     expect(booking2.date).to.equal("2020/01/24");
   });
+  it('Should have booking room number', () => {
+    expect(booking1.roomNumber).to.equal(bookings[0].roomNumber);
+    expect(booking2.roomNumber).to.equal(24);
+  });
+  it('Should have the room service charges', () => {
+    expect(booking1.roomServiceCharges)
+      .to.deep.equal(bookings[0].roomServiceCharges);
+    expect(booking2.roomServiceCharges).to.deep.equal([])
+  })
+
 
 });
