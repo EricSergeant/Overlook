@@ -4,7 +4,6 @@ const expect = chai.expect;
 import Rooms from '../src/Rooms';
 import rooms from './test-data/rooms-test-data';
 
-
 let room1, room2;
 
 describe('Hotel Room', () => {
@@ -25,6 +24,17 @@ describe('Hotel Room', () => {
     expect(room1.bidet).to.equal(true);
     expect(room2.bidet).to.equal(false);
   });
-
+  it('Should list the bed size', () => {
+    expect(room1.bedSize).to.equal(rooms[0].bedSize);
+    expect(room1.bedSize).to.equal('queen')
+  });
+  it('Should list the number of beds', () => {
+    expect(room2.numBeds).to.equal(rooms[1].numBeds);
+    expect(room2.numBeds).to.equal(2);
+  });
+  it('Should list the cost per night for room', () => {
+    expect(room1.costPerNight).to.equal(rooms[0].costPerNight);
+    expect(room2.costPerNight).to.equal(477.38);
+  })
 
 });
