@@ -38,12 +38,19 @@ describe('Customer', () => {
     expect(customer1.bookings.length).to.equal(0);
     expect(customer1.bookings).to.deep.equal([]);
   });
-  it('should record an array of all customer bookings', () => {
+  it('Should record an array of all customer bookings', () => {
     customer1.viewCustomerBookings(bookings);
     expect(customer1.bookings).to.deep.equal([bookings[4]]);
   });
   it('Should return the array of customer bookings', () => {
     let customerBookings = customer1.viewCustomerBookings(bookings);
     expect(customerBookings).to.deep.equal([bookings[4]]);
+  });
+  it('Should have empty list of avaialble rooms by default', () => {
+    expect(customer1.availableRoomNums.length).to.equal(0);
+  });
+  it('Should return available rooms only for booking date', () => {
+    let roomCheck = customer2.filterAvailableRoomsByDate("2020/02/06", bookings);
+    expect(roomCheck).to.deep.equal([1]);
   });
 });

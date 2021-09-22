@@ -26,6 +26,12 @@ class Customer {
     }, 0)
   }
 
+  filterAvailableRoomsByDate(date, bookings) {
+    this.availableRoomNums = bookings.filter(booking => booking.date === date)
+      .map(booking => booking.roomNumber)
+    return this.availableRoomNums;
+  }
+
 }
 
 export default Customer;
