@@ -35,6 +35,6 @@ describe('Hotel Room', () => {
   it('Should list the cost per night for room', () => {
     expect(room1.costPerNight).to.equal(rooms[0].costPerNight);
     expect(room2.costPerNight).to.equal(477.38);
-  })
+  });
 
 });
