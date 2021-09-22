@@ -16,9 +16,11 @@ describe('Hotel Room', () => {
   });
   it('Should have a room number', () => {
     expect(room1.roomNumber).to.equal(rooms[0].number);
+    expect(room2.roomNumber).to.equal(2);
   });
   it('Should have a room type', () => {
     expect(room2.roomType).to.equal(rooms[1].roomType);
+    expect(room1.roomType).to.equal("residential suite");
   });
   it('Should list whether it includes a bidet', () => {
     expect(room1.bidet).to.equal(true);
@@ -26,7 +28,7 @@ describe('Hotel Room', () => {
   });
   it('Should list the bed size', () => {
     expect(room1.bedSize).to.equal(rooms[0].bedSize);
-    expect(room1.bedSize).to.equal('queen')
+    expect(room1.bedSize).to.equal('queen');
   });
   it('Should list the number of beds', () => {
     expect(room2.numBeds).to.equal(rooms[1].numBeds);
