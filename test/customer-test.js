@@ -14,4 +14,7 @@ describe('Customer', () => {
   it('Should be a function', () => {
     expect(Customer).to.be.a('function');
   });
+  it('Should have a name', () => {
+    expect(customer1.name).to.be.equal("Leatha Ullrich");
+  });
 })
