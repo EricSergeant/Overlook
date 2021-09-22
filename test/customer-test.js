@@ -3,6 +3,8 @@ const expect = chai.expect;
 
 import Customer from '../src/Customer';
 import customers from './test-data/customer-test-data';
+import bookings from './test-data/bookings-test-data';
+import rooms from './test-data/rooms-test-data';
 
 let customer1, customer2;
 
@@ -17,4 +19,31 @@ describe('Customer', () => {
   it('Should have a name', () => {
     expect(customer1.name).to.be.equal("Leatha Ullrich");
   });
-})
+  it('SHould have an id', () => {
+    expect(customer2.id).to.equal(2);
+  });
+  it('Should have a default totalSpent of zero', () => {
+    expect(customer1.totalSpent).to.equal(0);
+    expect(customer2.totalSpent).to.equal(0);
+  });
+  it('Should record the totalSpent of customer', () => {
+    customer2.calcCustomerTotalSpent(bookings, rooms);
+    expect(customer2.totalSpent).to.equal(835.78)
+  });
+  it('Should record the totalSpent of customer', () => {
+    let total = customer2.calcCustomerTotalSpent(bookings, rooms);
+    expect(total).to.equal(835.78);
+  });
+  it('Should have an empty list of bookings by default', () => {
+    expect(customer1.bookings.length).to.equal(0);
+    expect(customer1.bookings).to.deep.equal([]);
+  });
+  it('should record an array of all customer bookings', () => {
+    customer1.viewCustomerBookings(bookings);
+    expect(customer1.bookings).to.deep.equal([bookings[4]]);
+  });
+  it('Should return the array of customer bookings', () => {
+    let customerBookings = customer1.viewCustomerBookings(bookings);
+    expect(customerBookings).to.deep.equal([bookings[4]]);
+  });
+});
