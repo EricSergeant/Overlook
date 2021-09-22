@@ -32,6 +32,18 @@ class Customer {
     return this.availableRoomNums;
   }
 
+  filterAvailableRoomsByType(rooms, roomType) {
+    let availableRooms = rooms
+      .filter(room => !this.availableRoomNums.includes(room.number));
+    // console.log('available rooms:', availableRooms);
+    let filteredType = availableRooms
+      .filter(room => room.roomType === roomType);
+    // console.log('filteredType:', filteredType)
+    this.availableRoomTypes = filteredType.map(room => room.number);
+    // console.log('available room types', availableRooms)
+    return filteredType;
+  }
+
 }
 
 export default Customer;

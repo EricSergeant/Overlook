@@ -50,7 +50,13 @@ describe('Customer', () => {
     expect(customer1.availableRoomNums.length).to.equal(0);
   });
   it('Should return available rooms only for booking date', () => {
-    let roomCheck = customer2.filterAvailableRoomsByDate("2020/02/06", bookings);
+    let roomCheck =
+      customer2.filterAvailableRoomsByDate("2020/02/06", bookings);
     expect(roomCheck).to.deep.equal([1]);
+  });
+  it('Should return a list of available rooms by room type', () => {
+    let filteredType =
+      customer1.filterAvailableRoomsByType(rooms, "single room");
+    expect(filteredType).to.deep.equal([rooms[2], rooms[3]]);
   });
 });
