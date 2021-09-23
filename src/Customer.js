@@ -23,7 +23,7 @@ class Customer {
         }
       })
       return total;
-    }, 0)
+    }, 0).toFixed(2)
   }
 
   filterAvailableRoomsByDate(date, bookings) {

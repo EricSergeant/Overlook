@@ -16,7 +16,9 @@ const domUpdates = {
       // eslint-disable-next-line max-len
       totalSpent.innerHTML += `<p>You've spent $${customer.totalSpent} to date.  Thank you for returning to us!</p>`
     }
-  }
+  },
+
+  // displayUpcomingBookings
 
 }
 

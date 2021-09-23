@@ -71,7 +71,9 @@ function instantiateRandomUser() {
 function initCustomer() {
   customer = new Customer(customerData.customers[5]);
   customer.viewCustomerBookings(bookingsData.bookings)
-  // console.log('instantiated customer', customer)
+  customer.calcCustomerTotalSpent(bookingsData.bookings, roomsData.rooms)
+  console.log('instantiated customer', customer)
+  // let expenses = customer.calcCustomerTotalSpent(bookingsData, roomsData)
   domUpdates.displayUserName(customer)
   domUpdates.displayAmountSpent(customer)
 }
