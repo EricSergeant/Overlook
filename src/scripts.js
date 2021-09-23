@@ -10,6 +10,7 @@ import './css/base.scss';
 //(also need to link to it in the index.html)
 import './images/turing-logo.png'
 
+import domUpdates from './domUpdates'
 import { customerPromise, bookingsPromise, roomsPromise } from './apiCalls';
 import Customer from './Customer'
 import Booking from './Booking'
@@ -20,6 +21,7 @@ let customerData, bookingsData, roomsData, customer;
 // console.log('This is the JavaScript entry file - your code begins here.');
 
 // *** query selectors ***
+
 
 
 
@@ -70,6 +72,7 @@ function initCustomer() {
   customer = new Customer(customerData.customers[5]);
   customer.viewCustomerBookings(bookingsData.bookings)
   // console.log('instantiated customer', customer)
+  domUpdates.displayUserName(customer)
 }
 
 function initRooms() {
@@ -78,8 +81,8 @@ function initRooms() {
     let newRoom = new Room(room)
     allRooms.push(newRoom)
   })
-  // console.log('roomData', roomsData)
-  // console.log('instantiated rooms', allRooms)
+  console.log('roomData', roomsData)
+  console.log('instantiated rooms', allRooms)
   return allRooms;
 }
 
@@ -90,6 +93,6 @@ function initBookings() {
     let newBooking = new Booking(booking)
     allBookings.push(newBooking)
   })
-  // console.log('instantiated bookings', allBookings)
+  // console.log('instantiated bookings', all Bookings)
   return allBookings
 }
