@@ -13,8 +13,16 @@ import { customerPromise, bookingsPromise, roomsPromise } from './apiCalls';
 let customerData, bookingsData, roomsData;
 
 console.log('This is the JavaScript entry file - your code begins here.');
+// query selectors 
 
 
+
+//event listeners
+
+
+// event handlers
+// on load
+window.addEventListener('load', gatherData);
 
 
 function gatherData() {
@@ -35,6 +43,7 @@ function initData(data) {
   customerData = data[0];
   bookingsData = data[1];
   roomsData = data[2];
+  console.log('Here is the promise data from scripts file:', data)
   //instantiate the classes with this
 }
 
