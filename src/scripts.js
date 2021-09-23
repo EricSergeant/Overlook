@@ -15,9 +15,10 @@ import Customer from './Customer'
 import Booking from './Booking'
 import Room from './Rooms'
 
-let customerData, bookingsData, roomsData, customer, rooms, bookings;
+let customerData, bookingsData, roomsData, customer, bookings;
 
-console.log('This is the JavaScript entry file - your code begins here.');
+// console.log('This is the JavaScript entry file - your code begins here.');
+
 // *** query selectors ***
 
 
@@ -50,11 +51,11 @@ function initData(data) {
   roomsData = data[2];
   // console.log('Here is the promise data from scripts file:', data)
 
-  //instantiate the classes with this
+  // * instantiate the classes with this *
   // instantiateRandomUser();
   initCustomer();
   initRooms();
-  // initBookings();
+  initBookings();
 }
 
 function instantiateRandomUser() {
@@ -67,6 +68,7 @@ function instantiateRandomUser() {
 
 function initCustomer() {
   customer = new Customer(customerData.customers[5]);
+  customer.viewCustomerBookings(bookingsData.bookings)
   // console.log('instantiated customer', customer)
 }
 
@@ -80,10 +82,13 @@ function initRooms() {
   return allRooms;
 }
 
-
-
-
-// function initBookings() {
-//   bookings = new Booking(bookingsData)
-//   console.log('instantiated bookings', bookings)
-// }
+// * do we need this?  Part of customer constructor *
+function initBookings() {
+  let allBookings = [];
+  bookingsData.bookings.forEach(booking => {
+    let newBooking = new Booking(booking)
+    allBookings.push(newBooking)
+  })
+  // console.log('instantiated bookings', allBookings)
+  return allBookings
+}
