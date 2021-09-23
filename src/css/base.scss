@@ -1,6 +1,23 @@
 /* This is an example of how to import a partial scss file*/
 @import '_variables';
 
+* {
+  border: 1px solid black;
+  // margin: 0;
+  // padding: 0;
+}
+
 body {
   background: $primary-background;
+  min-height: 100vh;
+  overflow: scroll;
+}
+
+html {
+  height: 100vh;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.hidden {
+  display: none;
 }

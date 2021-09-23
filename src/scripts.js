@@ -15,7 +15,7 @@ import Customer from './Customer'
 import Booking from './Booking'
 import Room from './Rooms'
 
-let customerData, bookingsData, roomsData, customer, bookings;
+let customerData, bookingsData, roomsData, customer;
 
 // console.log('This is the JavaScript entry file - your code begins here.');
 
@@ -78,6 +78,7 @@ function initRooms() {
     let newRoom = new Room(room)
     allRooms.push(newRoom)
   })
+  // console.log('roomData', roomsData)
   // console.log('instantiated rooms', allRooms)
   return allRooms;
 }
