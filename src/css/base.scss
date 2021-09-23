@@ -8,15 +8,19 @@
   // padding: 0;
 }
 
+html {
+  height: 100vh;
+  font-family: 'Montserrat', sans-serif;
+}
+
 body {
   background: $primary-background;
   min-height: 100vh;
   overflow: scroll;
 }
 
-html {
-  height: 100vh;
-  font-family: 'Montserrat', sans-serif;
+h1 {
+  font-size: 2rem
 }
 
 .hidden {
