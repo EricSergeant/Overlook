@@ -73,6 +73,7 @@ function initCustomer() {
   customer.viewCustomerBookings(bookingsData.bookings)
   // console.log('instantiated customer', customer)
   domUpdates.displayUserName(customer)
+  domUpdates.displayAmountSpent(customer)
 }
 
 function initRooms() {
