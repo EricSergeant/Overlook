@@ -1,3 +1,5 @@
+// *** import and variables ***
+
 // This is the JavaScript entry file - your code begins here
 // Do not delete or rename this file ********
 
@@ -13,18 +15,18 @@ import { customerPromise, bookingsPromise, roomsPromise } from './apiCalls';
 let customerData, bookingsData, roomsData;
 
 console.log('This is the JavaScript entry file - your code begins here.');
-// query selectors 
+// *** query selectors ***
 
 
 
-//event listeners
+// *** event listeners ***
 
 
-// event handlers
-// on load
+// *** event handlers ***
+// * on load *
 window.addEventListener('load', gatherData);
 
-
+// *** data initialization ***
 function gatherData() {
   let apiCustomerData = customerPromise()
     .then(data => data)
@@ -43,7 +45,23 @@ function initData(data) {
   customerData = data[0];
   bookingsData = data[1];
   roomsData = data[2];
-  console.log('Here is the promise data from scripts file:', data)
+  // console.log('Here is the promise data from scripts file:', data)
+
   //instantiate the classes with this
+  instantiateRandomUser();
+  // initCustomer();
+  // initRooms();
+  // initBookings();
 }
 
+function instantiateRandomUser() {
+  let randomUser = customerData.customers[Math
+    .round(Math.random() * customerData.customers.length)];
+  // let randomUser = customerData.customers[5];
+  console.log('random user result:', randomUser)
+  // domUpdates.displayUserName(currentUser);
+};
+
+// function customerData() {
+//   customer = new Customer();
+// }
