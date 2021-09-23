@@ -18,14 +18,45 @@
         <h2 class="total-spent" id="totalSpent">Total Spent</h2>
         <button class="menu-toggle" title="menu-toggle button" id="menu-toggle">Menu Button</button>
         <nav class ="nav-list" id="nav-menu">
-          <button class="nav-button active" id="dashboard-button" disabled>My Bookings</button>
+          <button class="nav-button active" id="dashboard-button">My Bookings</button>
           <button class="nav-button" id="new-book-button">Book A Room</button>
         </nav>
       </div>
   </header>
   <main>
     <h2 id="contain-heading">My Bookings</h2>
-    
+    <section class="customer-bookings" id="dashboard-view">
+      <p class="success-message" id="success-message"></p>
+      <h3>Current Bookings</h3>
+      <section class="booking-section" id="current-booking">
+      </section>
+      <h3>Past Bookings</h3>
+      <section class="booking-section" id="past-bookings">
+      </section>
+    </section>
+    <section class="new-booking hidden" id="new-book-view">
+      <form class="booking-form">
+        <div>
+          <label for="date-picker">Choose a date:</label>
+          <input type="date" name="choose-date" id="date-picker">
+        </div>
+        <section class="room-type-filter">
+          <label for="type-filter">Filter rooms by Type:</label>
+          <select id="type-filter">
+            <option value="all">All Rooms</option>
+            <option value="suite">Suite</option>
+            <option value="residential suite">Residential Suite</option>
+            <option value="junior suite">Junior Suite</option>
+            <option value="single room">Single Room</option>
+          </select>
+        </section>
+        <button class="submit" id="submit-search">View Rooms</button>
+      </form>
+      <p class="error-message" id="date-error"></p>
+      <section class="availability-section" id="available-rooms">
+      </section>
+    </section>
+
   </main>
   <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
   <script src="bundle.js"></script>
