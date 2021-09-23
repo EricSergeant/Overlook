@@ -11,8 +11,11 @@ import './css/base.scss';
 import './images/turing-logo.png'
 
 import { customerPromise, bookingsPromise, roomsPromise } from './apiCalls';
+import Customer from './Customer'
+import Booking from './Booking'
+import Room from './Rooms'
 
-let customerData, bookingsData, roomsData;
+let customerData, bookingsData, roomsData, customer, rooms, bookings;
 
 console.log('This is the JavaScript entry file - your code begins here.');
 // *** query selectors ***
@@ -48,9 +51,9 @@ function initData(data) {
   // console.log('Here is the promise data from scripts file:', data)
 
   //instantiate the classes with this
-  instantiateRandomUser();
-  // initCustomer();
-  // initRooms();
+  // instantiateRandomUser();
+  initCustomer();
+  initRooms();
   // initBookings();
 }
 
@@ -58,10 +61,29 @@ function instantiateRandomUser() {
   let randomUser = customerData.customers[Math
     .round(Math.random() * customerData.customers.length)];
   // let randomUser = customerData.customers[5];
-  console.log('random user result:', randomUser)
+  // console.log('random user result:', randomUser)
   // domUpdates.displayUserName(currentUser);
-};
+}
 
-// function customerData() {
-//   customer = new Customer();
+function initCustomer() {
+  customer = new Customer(customerData.customers[5]);
+  // console.log('instantiated customer', customer)
+}
+
+function initRooms() {
+  let allRooms = [];
+  roomsData.rooms.forEach(room => {
+    let newRoom = new Room(room)
+    allRooms.push(newRoom)
+  })
+  // console.log('instantiated rooms', allRooms)
+  return allRooms;
+}
+
+
+
+
+// function initBookings() {
+//   bookings = new Booking(bookingsData)
+//   console.log('instantiated bookings', bookings)
 // }
