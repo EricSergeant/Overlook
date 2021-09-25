@@ -130,10 +130,10 @@ function renderUserDisplay() {
 function showAvailableRooms(date, type, customer) {
   event.preventDefault()
   let parsedDate = date.split("-").join("/");
-  console.log('parsed date:', parsedDate)
-  console.log('today:', today)
+  // console.log('parsed date:', parsedDate)
+  // console.log('today:', today)
   if (parsedDate < today) {
-    console.log("i've triggered the comparison!!!")
+    // console.log("i've triggered the comparison!!!")
     return domUpdates.displayMessage(dateError, "Please pick a valid date")
   }
 
