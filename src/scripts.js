@@ -17,6 +17,7 @@ import Booking from './Booking'
 import Room from './Rooms'
 
 let customerData, bookingsData, roomsData, customer;
+let today = "2021/09/25";
 let date = new Date();
 let dd = String(date.getDate()).padStart(2, '0')
 let mm = String(date.getMonth() + 1).padStart(2, '0')
@@ -27,15 +28,21 @@ date = yyyy + '/' + mm + '/' + dd
 
 // *** query selectors ***
 
+const viewRooms = document.getElementById('submit-search');
 
+
+const chosenDate = document.querySelector('#date-picker');
+const chosenType = document.querySelector('select');
+const dateError = document.querySelector('#date-error')
 
 
 // *** event listeners ***
-
+viewRooms.addEventListener('click', () => showAvailableRooms(chosenDate.value, chosenType.value, customer))
 
 // *** event handlers ***
 // * on load *
 window.addEventListener('load', gatherData);
+
 
 // *** data initialization ***
 function gatherData() {
@@ -66,6 +73,7 @@ function initData(data) {
   renderUserDisplay();
 }
 
+// * note: not using this function, hardcoded user on following function *
 function instantiateRandomUser() {
   let randomUser = customerData.customers[Math
     .round(Math.random() * customerData.customers.length)];
@@ -116,4 +124,17 @@ function renderUserDisplay() {
     }
   })
   return bookingsType
+}
+
+
+function showAvailableRooms(date, type, customer) {
+  event.preventDefault()
+  let parsedDate = date.split("-").join("/");
+  console.log('parsed date:', parsedDate)
+  console.log('today:', today)
+  if (parsedDate < today) {
+    console.log("i've triggered the comparison!!!")
+    return domUpdates.displayMessage(dateError, "Please pick a valid date")
+  }
+
 }

@@ -6,6 +6,7 @@ const upComingStays = document.getElementById('upcomingStays');
 const noUpComingStays = document.getElementById('noUpcomingStays');
 
 
+
 const domUpdates = {
 
   displayUserName(customer) {
@@ -45,6 +46,7 @@ const domUpdates = {
       </div>
       <div class="room-info">
       <p id="roomDate">${myRooms.date}</p>
+      <p id="roomType">${myRooms.room.roomType}</p>
         <p id="roomBeds">${myRooms.room.numBeds} ${myRooms.room.bedSize}</p>
         <p id="room-cost">$${myRooms.room.costPerNight} per night</p>
       </div>
@@ -77,7 +79,14 @@ const domUpdates = {
       </article>
       `;
     })
+  },
+
+  displayMessage(element, info) {
+    element.innerHTML = '';
+    element.innerText = info;
   }
+
+
 }
 
 export default domUpdates;
