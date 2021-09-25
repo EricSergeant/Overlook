@@ -1,2 +1,13 @@
-$primary-background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
+$primary-background: radial-gradient(circle,#9e3b17 40%, #63190f) 60%;
+$primary-color: #63190f;
+$secondary-color: #9e3b17;
+$highlight-color: #6b8b93;
+$dark-color: #351c10;
 ;
+
+
+@mixin flex-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
