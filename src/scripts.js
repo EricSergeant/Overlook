@@ -132,9 +132,12 @@ function showAvailableRooms(date, type, customer) {
   let parsedDate = date.split("-").join("/");
   // console.log('parsed date:', parsedDate)
   // console.log('today:', today)
-  if (parsedDate < today) {
+  if (!date) {
+    return domUpdates.displayMessage(dateError, "Please choose a date in order to view available rooms")
+  } else if (parsedDate < today) {
     // console.log("i've triggered the comparison!!!")
     return domUpdates.displayMessage(dateError, "Please pick a valid date")
+  } else {
+    return domUpdates.displayMessage(dateError, "These are the available rooms for that date:")
   }
-
 }
