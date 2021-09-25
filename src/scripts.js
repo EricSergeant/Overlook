@@ -17,6 +17,11 @@ import Booking from './Booking'
 import Room from './Rooms'
 
 let customerData, bookingsData, roomsData, customer;
+let date = new Date();
+let dd = String(date.getDate()).padStart(2, '0')
+let mm = String(date.getMonth() + 1).padStart(2, '0')
+let yyyy = date.getFullYear()
+date = yyyy + '/' + mm + '/' + dd
 
 // console.log('This is the JavaScript entry file - your code begins here.');
 
@@ -58,6 +63,7 @@ function initData(data) {
   initCustomer();
   initRooms();
   initBookings();
+  renderUserDisplay();
 }
 
 function instantiateRandomUser() {
@@ -70,12 +76,11 @@ function instantiateRandomUser() {
 
 function initCustomer() {
   customer = new Customer(customerData.customers[5]);
-  customer.viewCustomerBookings(bookingsData.bookings)
+  customer.createCustomerBookings(bookingsData.bookings)
+  customer.createCustomerRooms(roomsData.rooms)
   customer.calcCustomerTotalSpent(bookingsData.bookings, roomsData.rooms)
-  console.log('instantiated customer', customer)
+  // console.log('instantiated customer', customer)
   // let expenses = customer.calcCustomerTotalSpent(bookingsData, roomsData)
-  domUpdates.displayUserName(customer)
-  domUpdates.displayAmountSpent(customer)
 }
 
 function initRooms() {
@@ -84,8 +89,8 @@ function initRooms() {
     let newRoom = new Room(room)
     allRooms.push(newRoom)
   })
-  console.log('roomData', roomsData)
-  console.log('instantiated rooms', allRooms)
+  // console.log('roomData', roomsData)
+  // console.log('instantiated rooms', allRooms)
   return allRooms;
 }
 
@@ -98,4 +103,17 @@ function initBookings() {
   })
   // console.log('instantiated bookings', all Bookings)
   return allBookings
+}
+
+function renderUserDisplay() {
+  domUpdates.displayUserName(customer)
+  domUpdates.displayAmountSpent(customer)
+  let bookingsType = customer.bookings.filter(booking => {
+    if (booking.date < date) {
+      domUpdates.displayPastBookings(customer)
+    } else {
+      domUpdates.dipslayUpcomingBookings(customer)
+    }
+  })
+  return bookingsType
 }

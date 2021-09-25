@@ -4,18 +4,38 @@ class Customer {
     this.name = customerData.name;
     this.totalSpent = 0;
     this.bookings = [];
+    this.roomInfo = []; //new try
     this.availableRoomNums = [];
     this.availableRoomTypes = [];
   }
 
-  viewCustomerBookings(bookings) {
-    let myBookings = bookings.filter(booking => booking.userID === this.id);
-    this.bookings = myBookings;
-    return myBookings;
+  createCustomerBookings(bookings) {
+    let myBookings = bookings
+      .filter(booking => booking.userID === this.id) // original
+
+    this.bookings = myBookings; //original
+    // console.log('myBookings', myBookings)
+    return myBookings; //original
   }
 
+  createCustomerRooms(rooms) {
+    // console.log('all rooms:', rooms);
+    let myRoomInfo = rooms.reduce((roomsBooked, room) => {
+      this.bookings.forEach(booking => {
+        if (booking.roomNumber === room.number) {
+          roomsBooked.push({ room, date: booking.date })
+        }
+      })
+      return roomsBooked;
+    }, []);
+    // console.log('myRoomInfo:', myRoomInfo);
+    this.roomInfo = myRoomInfo;
+    return myRoomInfo;
+  }
+
+
   calcCustomerTotalSpent(bookings, rooms) {
-    this.viewCustomerBookings(bookings);
+    // this.viewCustomerBookings(bookings, rooms);
     return this.totalSpent = rooms.reduce((total, room) => {
       this.bookings.forEach(booking => {
         if (booking.roomNumber === room.number) {
@@ -25,6 +45,12 @@ class Customer {
       return total;
     }, 0).toFixed(2)
   }
+
+  // sortBookings(bookings) {
+  //   return bookings.sort((a, b) => {
+  //     return a.date - b.date
+  //   })
+  // }
 
   filterAvailableRoomsByDate(date, bookings) {
     this.availableRoomNums = bookings.filter(booking => booking.date === date)
