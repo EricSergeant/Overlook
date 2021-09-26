@@ -4,7 +4,8 @@ class Customer {
     this.name = customerData.name;
     this.totalSpent = 0;
     this.bookings = [];
-    this.roomInfo = []; //new try
+    this.roomInfo = [];
+    this.unavailableRooms = [];
     this.availableRoomNums = [];
     this.availableRoomTypes = [];
     this.availableRooms = [];
@@ -12,11 +13,9 @@ class Customer {
 
   createCustomerBookings(bookings) {
     let myBookings = bookings
-      .filter(booking => booking.userID === this.id) // original
-
-    this.bookings = myBookings; //original
-    // console.log('myBookings', myBookings)
-    return myBookings; //original
+      .filter(booking => booking.userID === this.id)
+    this.bookings = myBookings;
+    return myBookings;
   }
 
   createCustomerRooms(rooms) {
@@ -47,20 +46,27 @@ class Customer {
     }, 0).toFixed(2)
   }
 
-  // sortBookings(bookings) {
-  //   return bookings.sort((a, b) => {
-  //     return a.date - b.date
-  //   })
-  // }
+  filterUnavailableRoomsByDate(date, bookings) {
+    this.unavailableRooms = bookings.filter(booking => booking.date === date)
+      .map(booking => booking.roomNumber)
+    console.log('unavailable rooms:', this.unavailableRooms)
+    return this.unavailableRooms;
+  }
 
-  // filterAvailableRoomsByDate(date, bookings) {
-  //   this.availableRoomNums = bookings.filter(booking => booking.date !== date)
-  //     .map(booking => booking.roomNumber)
-  //   return this.availableRoomNums;
-  // }
+  filterRoomsByType(rooms, roomType) {
+    let availableRooms = this.getAvailableRooms(rooms);
+    let filteredType = availableRooms.filter(roomObj => roomObj.roomType === roomType)
+    this.availableRoomTypes = filteredType.map(room => room.number)
+    console.log('room num by type', filteredType)
+    return filteredType
+  }
+  getAvailableRooms(rooms) {
+    return rooms.filter(room => ~this.availableRoomNums.includes(room.number))
+  }
 
+  /* original try:
   filterAvailableRoomsByDate(date, rooms, bookings) {
-    // console.log('rooms here in customer:', rooms)
+    // console.log('rooms in customer start filter:', rooms)
     let available = rooms.map(room => {
       if (room.number === bookings.roomNumber
         && bookings.date !== date) {
@@ -69,17 +75,33 @@ class Customer {
     })
     this.availableRoomNums = available
     this.availableRooms.push(rooms)
-    console.log('available rooms in customer:', this.availableRooms)
+    console.log('available in cutomer end filter1:', this.availableRooms)
   }
 
   filterAvailableRoomsByType(roomType) {
-    console.log('filter is firing this:', roomType)
+    console.log('filter2 is firing this:', roomType)
     if (roomType === 'all') {
       return
     } else {
-      // console.log('filter by type:', roomType)
-      return this.availableRooms.filter(room => room.roomType === roomType)
+      console.log('avilable in filter2 by type:', this.availableRooms)
+
+      let results = this.availableRooms
+        .filter(room => {
+          return room.roomType === roomType
+        })
+      console.log('results of filter2', results)
+
+      // let results = this.availableRooms
+      //   .forEach(room => {
+      //     room.filter(item => {
+      //       return item.roomType === roomType
+      //     })
+      //   })
+      this.availableRooms = results
+      // console.log('available rooms at end:', this.availableRooms)
+
     }
+
     // let availableRooms = rooms
     //   .filter(room => !this.availableRoomNums.includes(room.number));
     // // console.log('available rooms:', availableRooms);
@@ -91,6 +113,7 @@ class Customer {
     // return filteredType;
 
   }
+  */
 
 }
 

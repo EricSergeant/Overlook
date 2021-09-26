@@ -92,7 +92,7 @@ const domUpdates = {
 
     // console.log('customer in DOM', customer)
     // console.log('available room data:', rooms)
-    // console.log('available in DOM:', customer.availableRooms)
+    console.log('available in DOM:', customer.availableRooms)
 
     customer.availableRooms.forEach(openRooms => {
       openRooms.forEach(item => {
