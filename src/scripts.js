@@ -155,6 +155,6 @@ function showAvailableRooms(date, type, customer) {
     // customer.filterUnavailableRoomsByDate('2020/04/22', bookingsData.bookings); // TEST VERSION
     customer.filterUnavailableRoomsByDate(date, bookingsData.bookings);
     customer.filterRoomsByType(roomsData.rooms, selectType.value)
-    domUpdates.displayRoomsAvailable(customer, allRooms)
+    domUpdates.displayRoomsAvailable(customer)  //cut allRooms
   }
 }

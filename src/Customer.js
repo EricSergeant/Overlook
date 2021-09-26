@@ -9,6 +9,7 @@ class Customer {
     this.availableRoomNums = [];
     this.availableRoomTypes = [];
     this.availableRooms = [];
+    this.filteredType = [];
   }
 
   createCustomerBookings(bookings) {
@@ -55,14 +56,17 @@ class Customer {
 
   filterRoomsByType(rooms, roomType) {
     let availableRooms = this.getAvailableRooms(rooms);
-    let filteredType = availableRooms.filter(roomObj => roomObj.roomType === roomType)
-    this.availableRoomTypes = filteredType.map(room => room.number)
-    console.log('room num by type', filteredType)
-    return filteredType
+    this.filteredType = availableRooms
+      .filter(roomObj => roomObj.roomType === roomType)
+    this.availableRoomTypes = this.filteredType.map(room => room.number)
+    console.log('room num by type', this.filteredType)
+    return this.filteredType
   }
+
   getAvailableRooms(rooms) {
-    return rooms.filter(room => ~this.availableRoomNums.includes(room.number))
+    return rooms.filter(room => !this.availableRoomNums.includes(room.number))
   }
+
 
   /* original try:
   filterAvailableRoomsByDate(date, rooms, bookings) {
