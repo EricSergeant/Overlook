@@ -35,6 +35,7 @@ const chosenDate = document.querySelector('#date-picker');
 const chosenType = document.querySelector('select');
 const dateError = document.querySelector('#date-error')
 const typeAvailability = document.querySelector('#type-availability')
+const selectType = document.querySelector('#type-filter');
 
 
 
@@ -150,6 +151,9 @@ function showAvailableRooms(date, type, customer) {
 
     // console.log('rooms in scripts:', allRooms)
     customer.filterAvailableRoomsByDate(parsedDate, allRooms, allBookings)
+
+    customer.filterAvailableRoomsByType(selectType.value)
+
     domUpdates.displayRoomsAvailable(customer, allRooms)
     // console.log('filtered available:', customer.showAvailableRooms)
 

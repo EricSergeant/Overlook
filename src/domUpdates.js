@@ -73,6 +73,7 @@ const domUpdates = {
       <div class="room-image">
       </div>
       <div class="room-info">
+        <p id="roomBeds">${myRooms.room.roomType}</p>
         <p id="roomBeds">${myRooms.room.numBeds} ${myRooms.room.bedSize}</p>
         <p id="room-cost">$${myRooms.room.costPerNight} per night</p>
       </div>
@@ -101,6 +102,7 @@ const domUpdates = {
         <div class="room-image">
         </div>
         <div class="room-info">
+          <p id="roomBeds">${item.roomType}</p>
           <p id="roomBeds">${item.numBeds} ${item.bedSize}</p>
           <p id="room-cost">$${item.costPerNight} per night</p>
         </div>

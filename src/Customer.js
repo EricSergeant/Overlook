@@ -69,19 +69,27 @@ class Customer {
     })
     this.availableRoomNums = available
     this.availableRooms.push(rooms)
-    // console.log('available rooms in customer:', this.availableRooms)
+    console.log('available rooms in customer:', this.availableRooms)
   }
 
-  filterAvailableRoomsByType(rooms, roomType) {
-    let availableRooms = rooms
-      .filter(room => !this.availableRoomNums.includes(room.number));
-    // console.log('available rooms:', availableRooms);
-    let filteredType = availableRooms
-      .filter(room => room.roomType === roomType);
-    // console.log('filteredType:', filteredType)
-    this.availableRoomTypes = filteredType.map(room => room.number);
-    // console.log('available room types', availableRooms)
-    return filteredType;
+  filterAvailableRoomsByType(roomType) {
+    console.log('filter is firing this:', roomType)
+    if (roomType === 'all') {
+      return
+    } else {
+      // console.log('filter by type:', roomType)
+      return this.availableRooms.filter(room => room.roomType === roomType)
+    }
+    // let availableRooms = rooms
+    //   .filter(room => !this.availableRoomNums.includes(room.number));
+    // // console.log('available rooms:', availableRooms);
+    // let filteredType = availableRooms
+    //   .filter(room => room.roomType === roomType);
+    // // console.log('filteredType:', filteredType)
+    // this.availableRoomTypes = filteredType.map(room => room.number);
+    // // console.log('available room types', availableRooms)
+    // return filteredType;
+
   }
 
 }
