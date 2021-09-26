@@ -5,7 +5,7 @@ const noPastBookings = document.getElementById('noPastStays');
 const upComingStays = document.getElementById('upcomingStays');
 const noUpComingStays = document.getElementById('noUpcomingStays');
 const availableToBook = document.getElementById('available-rooms');
-
+const availableRooms = document.getElementById('availableRooms');
 
 
 const domUpdates = {
@@ -87,24 +87,43 @@ const domUpdates = {
     element.innerText = info;
   },
 
-  displayRoomsAvailable(customer, rooms) {
-    availableToBook.innerHTML = '';
+  displayRoomsAvailable(customer) {
+    availableRooms.innerHTML = '';
 
-    console.log('available rooms DOM', customer)
-    console.log('available room data:', rooms)
+    // console.log('customer in DOM', customer)
+    // console.log('available room data:', rooms)
+    // console.log('available in DOM:', customer.availableRooms)
 
-    // customer.avaiableRooms.rooms.forEach(openRooms => {
+    customer.availableRooms.forEach(openRooms => {
+      openRooms.forEach(item => {
+        // console.log('item in dom:', item.costPerNight)
+        availableRooms.innerHTML += `
+        <article class="past-booking-card">
+        <div class="room-image">
+        </div>
+        <div class="room-info">
+          <p id="roomBeds">${item.numBeds} ${item.bedSize}</p>
+          <p id="room-cost">$${item.costPerNight} per night</p>
+        </div>
+        </article>
+        `;
+      })
+    })
+
+    // customer.availableRooms.forEach(openRooms => {
+    //   console.log('openRooms in dom:', openRooms.numBeds)
     //   pastBookings.innerHTML += `
     //   <article class="past-booking-card">
     //   <div class="room-image">
     //   </div>
     //   <div class="room-info">
-    //     <p id="roomBeds">${openRooms.room.numBeds} ${openRooms.room.bedSize}</p>
-    //     <p id="room-cost">$${openRooms.room.costPerNight} per night</p>
+    //     <p id="roomBeds">${openRooms.numBeds} ${openRooms.bedSize}</p>
+    //     <p id="room-cost">$${openRooms.costPerNight} per night</p>
     //   </div>
     //   </article>
     //   `;
     // })
+
   }
 
 

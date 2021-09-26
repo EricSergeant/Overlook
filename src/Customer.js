@@ -69,7 +69,7 @@ class Customer {
     })
     this.availableRoomNums = available
     this.availableRooms.push(rooms)
-    // console.log('available rooms in customer:', this.availableRooms)
+    console.log('available rooms in customer:', this.availableRooms)
   }
 
   filterAvailableRoomsByType(rooms, roomType) {
