@@ -55,12 +55,16 @@ class Customer {
   }
 
   filterRoomsByType(rooms, roomType) {
-    let availableRooms = this.getAvailableRooms(rooms);
-    this.filteredType = availableRooms
-      .filter(roomObj => roomObj.roomType === roomType)
-    this.availableRoomTypes = this.filteredType.map(room => room.number)
-    console.log('room num by type', this.filteredType)
-    return this.filteredType
+    if (roomType === 'all') {
+      this.filteredType = this.getAvailableRooms(rooms)
+    } else {
+      let availableRooms = this.getAvailableRooms(rooms);
+      this.filteredType = availableRooms
+        .filter(roomObj => roomObj.roomType === roomType)
+      this.availableRoomTypes = this.filteredType.map(room => room.number)
+      console.log('room num by type', this.filteredType)
+      return this.filteredType
+    }
   }
 
   getAvailableRooms(rooms) {
