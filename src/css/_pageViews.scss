@@ -26,15 +26,20 @@ nav {
 .total-spent,
 .room-info {
   @include flex-center;
-  @include mainCardStyle;
+  // @include mainCardStyle;
 }
 
 .available-results,
 .search-results {
   @include grid;
-  @include mainCardStyle;
+  // @include mainCardStyle;
   align-items: center;
 }
+
+.room-info {
+  @include mainCardStyle;
+}
+
 // ** booking page **
 
 // ** search result page **
