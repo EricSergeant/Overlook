@@ -96,7 +96,7 @@ const domUpdates = {
 
     customer.filteredType.forEach(openRooms => {
       availableRooms.innerHTML += `
-        <article class="past-booking-card">
+        <article class="available-booking-card">
         <div class="room-image">
         </div>
         <div class="room-info">

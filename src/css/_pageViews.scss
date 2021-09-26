@@ -15,11 +15,26 @@ nav {
 }
 
 // ** profile page **
-.profile-page {
+.profile-page,
+.new-booking,
+.availability-section {
   @include flex-center;
   text-align: center;
 }
 
+.search-results,
+.total-spent,
+.room-info {
+  @include flex-center;
+  @include mainCardStyle;
+}
+
+.available-results,
+.search-results {
+  @include grid;
+  @include mainCardStyle;
+  align-items: center;
+}
 // ** booking page **
 
 // ** search result page **

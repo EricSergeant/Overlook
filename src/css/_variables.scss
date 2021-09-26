@@ -11,3 +11,12 @@ $dark-color: #351c10;
   flex-direction: column;
   align-items: center;
 }
+@mixin grid {
+  display: grid;
+  grid-gap: 5rem;
+}
+
+@mixin mainCardStyle {
+  background-color: $highlight-color;
+  box-shadow: 0 2px 4px 0 $dark-color;
+}
