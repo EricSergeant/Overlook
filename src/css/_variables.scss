@@ -21,5 +21,6 @@ $dark-color: #351c10;
 
 @mixin mainCardStyle {
   background-color: $highlight-color;
+  padding: 1em;
   box-shadow: 0 2px 4px 0 $dark-color;
 }

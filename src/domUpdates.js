@@ -103,6 +103,7 @@ const domUpdates = {
           <p id="roomBeds">${openRooms.roomType}</p>
           <p id="roomBeds">${openRooms.numBeds} ${openRooms.bedSize}</p>
           <p id="room-cost">$${openRooms.costPerNight} per night</p>
+          <button class="booking-button" id="bookingButton${openRooms.number}">Book this room!</button>
         </div>
         </article>
         `;
@@ -127,6 +128,7 @@ const domUpdates = {
     */
 
   }
+
 
 
 }

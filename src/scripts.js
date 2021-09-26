@@ -139,9 +139,9 @@ function showAvailableRooms(date, type, customer) {
   // console.log('allbookings:', allBookings)
   if (!date) {
     // eslint-disable-next-line max-len
-    return domUpdates.displayMessage(dateError, "Please choose a date in order to view available rooms")
+    return domUpdates.displayMessage(dateError, "Please choose a date in order to view available rooms.")
   } else if (parsedDate < today) {
-    return domUpdates.displayMessage(dateError, "Please pick a valid date")
+    return domUpdates.displayMessage(dateError, "Cannot book rooms in the past. Please pick a valid date.")
   } else {
     // console.log('customer in show:', customer.
     // filterAvailableRoomsByDate(parsedDate, allBookings))
@@ -157,4 +157,12 @@ function showAvailableRooms(date, type, customer) {
     customer.filterRoomsByType(roomsData.rooms, selectType.value)
     domUpdates.displayRoomsAvailable(customer)  //cut allRooms
   }
+}
+
+function showIndividualRoom(event) {
+  event.preventDefault();
+
+  let individualRoom = event.target.closest('article').id;
+  let currentRoom = findIndividualRoom(individualRoom.pop())
+  domUpdates.show()
 }
