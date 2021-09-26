@@ -4,6 +4,8 @@ const pastBookings = document.getElementById('pastStays');
 const noPastBookings = document.getElementById('noPastStays');
 const upComingStays = document.getElementById('upcomingStays');
 const noUpComingStays = document.getElementById('noUpcomingStays');
+const availableToBook = document.getElementById('available-rooms');
+const availableRooms = document.getElementById('availableRooms');
 
 
 const domUpdates = {
@@ -45,6 +47,7 @@ const domUpdates = {
       </div>
       <div class="room-info">
       <p id="roomDate">${myRooms.date}</p>
+      <p id="roomType">${myRooms.room.roomType}</p>
         <p id="roomBeds">${myRooms.room.numBeds} ${myRooms.room.bedSize}</p>
         <p id="room-cost">$${myRooms.room.costPerNight} per night</p>
       </div>
@@ -77,7 +80,53 @@ const domUpdates = {
       </article>
       `;
     })
+  },
+
+  displayMessage(element, info) {
+    element.innerHTML = '';
+    element.innerText = info;
+  },
+
+  displayRoomsAvailable(customer) {
+    availableRooms.innerHTML = '';
+
+    // console.log('customer in DOM', customer)
+    // console.log('available room data:', rooms)
+    // console.log('available in DOM:', customer.availableRooms)
+
+    customer.availableRooms.forEach(openRooms => {
+      openRooms.forEach(item => {
+        // console.log('item in dom:', item.costPerNight)
+        availableRooms.innerHTML += `
+        <article class="past-booking-card">
+        <div class="room-image">
+        </div>
+        <div class="room-info">
+          <p id="roomBeds">${item.numBeds} ${item.bedSize}</p>
+          <p id="room-cost">$${item.costPerNight} per night</p>
+        </div>
+        </article>
+        `;
+      })
+    })
+
+    // customer.availableRooms.forEach(openRooms => {
+    //   console.log('openRooms in dom:', openRooms.numBeds)
+    //   pastBookings.innerHTML += `
+    //   <article class="past-booking-card">
+    //   <div class="room-image">
+    //   </div>
+    //   <div class="room-info">
+    //     <p id="roomBeds">${openRooms.numBeds} ${openRooms.bedSize}</p>
+    //     <p id="room-cost">$${openRooms.costPerNight} per night</p>
+    //   </div>
+    //   </article>
+    //   `;
+    // })
+
   }
+
+
 }
 
 export default domUpdates;
