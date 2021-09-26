@@ -4,6 +4,7 @@ const pastBookings = document.getElementById('pastStays');
 const noPastBookings = document.getElementById('noPastStays');
 const upComingStays = document.getElementById('upcomingStays');
 const noUpComingStays = document.getElementById('noUpcomingStays');
+const availableToBook = document.getElementById('available-rooms');
 
 
 
@@ -84,6 +85,26 @@ const domUpdates = {
   displayMessage(element, info) {
     element.innerHTML = '';
     element.innerText = info;
+  },
+
+  displayRoomsAvailable(customer, rooms) {
+    availableToBook.innerHTML = '';
+
+    console.log('available rooms DOM', customer)
+    console.log('available room data:', rooms)
+
+    // customer.avaiableRooms.rooms.forEach(openRooms => {
+    //   pastBookings.innerHTML += `
+    //   <article class="past-booking-card">
+    //   <div class="room-image">
+    //   </div>
+    //   <div class="room-info">
+    //     <p id="roomBeds">${openRooms.room.numBeds} ${openRooms.room.bedSize}</p>
+    //     <p id="room-cost">$${openRooms.room.costPerNight} per night</p>
+    //   </div>
+    //   </article>
+    //   `;
+    // })
   }
 
 

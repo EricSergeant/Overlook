@@ -16,7 +16,7 @@ import Customer from './Customer'
 import Booking from './Booking'
 import Room from './Rooms'
 
-let customerData, bookingsData, roomsData, customer;
+let customerData, bookingsData, roomsData, allBookings, allRooms, customer;
 let today = "2021/09/25";
 let date = new Date();
 let dd = String(date.getDate()).padStart(2, '0')
@@ -92,7 +92,7 @@ function initCustomer() {
 }
 
 function initRooms() {
-  let allRooms = [];
+  allRooms = [];
   roomsData.rooms.forEach(room => {
     let newRoom = new Room(room)
     allRooms.push(newRoom)
@@ -104,12 +104,12 @@ function initRooms() {
 
 // * do we need this?  Part of customer constructor *
 function initBookings() {
-  let allBookings = [];
+  allBookings = [];
   bookingsData.bookings.forEach(booking => {
     let newBooking = new Booking(booking)
     allBookings.push(newBooking)
   })
-  // console.log('instantiated bookings', all Bookings)
+  // console.log('instantiated bookings', allBookings)
   return allBookings
 }
 
@@ -130,14 +130,26 @@ function renderUserDisplay() {
 function showAvailableRooms(date, type, customer) {
   event.preventDefault()
   let parsedDate = date.split("-").join("/");
-  // console.log('parsed date:', parsedDate)
+  // console.log('customer entry to f:', customer)
+  console.log('parsed date:', parsedDate)
   // console.log('today:', today)
+  // console.log('allbookings:', allBookings)
   if (!date) {
+    // eslint-disable-next-line max-len
     return domUpdates.displayMessage(dateError, "Please choose a date in order to view available rooms")
   } else if (parsedDate < today) {
     // console.log("i've triggered the comparison!!!")
     return domUpdates.displayMessage(dateError, "Please pick a valid date")
   } else {
-    return domUpdates.displayMessage(dateError, "These are the available rooms for that date:")
+    // console.log('customer in show:', customer.
+    // filterAvailableRoomsByDate(parsedDate, allBookings))
+    // eslint-disable-next-line max-len
+    domUpdates.displayMessage(dateError, "These are the available rooms for that date:")
+
+    // console.log('rooms in scripts:', allRooms)
+    customer.filterAvailableRoomsByDate(parsedDate, allRooms, allBookings)
+    domUpdates.displayRoomsAvailable(customer, allRooms)
+    // console.log('filtered available:', customer.showAvailableRooms)
+
   }
 }

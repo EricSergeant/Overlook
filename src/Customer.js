@@ -7,6 +7,7 @@ class Customer {
     this.roomInfo = []; //new try
     this.availableRoomNums = [];
     this.availableRoomTypes = [];
+    this.availableRooms = [];
   }
 
   createCustomerBookings(bookings) {
@@ -52,10 +53,23 @@ class Customer {
   //   })
   // }
 
-  filterAvailableRoomsByDate(date, bookings) {
-    this.availableRoomNums = bookings.filter(booking => booking.date === date)
-      .map(booking => booking.roomNumber)
-    return this.availableRoomNums;
+  // filterAvailableRoomsByDate(date, bookings) {
+  //   this.availableRoomNums = bookings.filter(booking => booking.date !== date)
+  //     .map(booking => booking.roomNumber)
+  //   return this.availableRoomNums;
+  // }
+
+  filterAvailableRoomsByDate(date, rooms, bookings) {
+    console.log('rooms here in customer:', rooms)
+    let available = rooms.map(room => {
+      if (room.number === bookings.roomNumber
+        && bookings.date !== date) {
+        return room.number
+      }
+    })
+    this.availableRoomNums = available
+    rooms.rooms.push(this.avilableRooms)
+    console.log('only available rooms in customer:', this.availableRooms)
   }
 
   filterAvailableRoomsByType(rooms, roomType) {
