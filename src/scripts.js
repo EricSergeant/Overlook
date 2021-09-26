@@ -34,6 +34,8 @@ const viewRooms = document.getElementById('submit-search');
 const chosenDate = document.querySelector('#date-picker');
 const chosenType = document.querySelector('select');
 const dateError = document.querySelector('#date-error')
+const typeAvailability = document.querySelector('#type-availability')
+
 
 
 // *** event listeners ***

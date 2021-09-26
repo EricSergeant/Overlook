@@ -7,7 +7,6 @@ const noUpComingStays = document.getElementById('noUpcomingStays');
 const availableToBook = document.getElementById('available-rooms');
 const availableRooms = document.getElementById('availableRooms');
 
-
 const domUpdates = {
 
   displayUserName(customer) {
