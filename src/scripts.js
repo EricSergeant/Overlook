@@ -34,6 +34,9 @@ const viewRooms = document.getElementById('submit-search');
 const chosenDate = document.querySelector('#date-picker');
 const chosenType = document.querySelector('select');
 const dateError = document.querySelector('#date-error')
+const typeAvailability = document.querySelector('#type-availability')
+const selectType = document.querySelector('#type-filter');
+
 
 
 // *** event listeners ***
@@ -138,7 +141,6 @@ function showAvailableRooms(date, type, customer) {
     // eslint-disable-next-line max-len
     return domUpdates.displayMessage(dateError, "Please choose a date in order to view available rooms")
   } else if (parsedDate < today) {
-    // console.log("i've triggered the comparison!!!")
     return domUpdates.displayMessage(dateError, "Please pick a valid date")
   } else {
     // console.log('customer in show:', customer.
@@ -146,10 +148,13 @@ function showAvailableRooms(date, type, customer) {
     // eslint-disable-next-line max-len
     domUpdates.displayMessage(dateError, "These are the available rooms for that date:")
 
-    // console.log('rooms in scripts:', allRooms)
+    /* original on hold:
     customer.filterAvailableRoomsByDate(parsedDate, allRooms, allBookings)
-    domUpdates.displayRoomsAvailable(customer, allRooms)
-    // console.log('filtered available:', customer.showAvailableRooms)
-
+    customer.filterAvailableRoomsByType(selectType.value)
+    */
+    // customer.filterUnavailableRoomsByDate('2020/04/22', bookingsData.bookings); // TEST VERSION
+    customer.filterUnavailableRoomsByDate(date, bookingsData.bookings);
+    customer.filterRoomsByType(roomsData.rooms, selectType.value)
+    domUpdates.displayRoomsAvailable(customer)  //cut allRooms
   }
 }
