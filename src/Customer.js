@@ -60,7 +60,7 @@ class Customer {
   // }
 
   filterAvailableRoomsByDate(date, rooms, bookings) {
-    console.log('rooms here in customer:', rooms)
+    // console.log('rooms here in customer:', rooms)
     let available = rooms.map(room => {
       if (room.number === bookings.roomNumber
         && bookings.date !== date) {
@@ -68,8 +68,8 @@ class Customer {
       }
     })
     this.availableRoomNums = available
-    rooms.rooms.push(this.avilableRooms)
-    console.log('only available rooms in customer:', this.availableRooms)
+    this.availableRooms.push(rooms)
+    // console.log('available rooms in customer:', this.availableRooms)
   }
 
   filterAvailableRoomsByType(rooms, roomType) {
