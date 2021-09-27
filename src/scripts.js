@@ -177,8 +177,9 @@ function bookRoom() {
   let datePost = parsedDate;
   // let roomNumberPost = bookingButton.srcElement.id;
   let roomNumberPost = event.target.closest('.available-booking-card').id.split("-")[1];
+  let fixedRoom = Number(roomNumberPost)
   console.log('booking room info:', userIDPost, datePost, roomNumberPost)
-  postBooking(userIDPost, datePost, roomNumberPost);
+  postBooking(userIDPost, datePost, fixedRoom);
 }
 
 function postBooking(userID, date, roomNumber) {
@@ -197,6 +198,7 @@ function postBooking(userID, date, roomNumber) {
 
 function renderPost() {
   console.log("ready to render, add re-fetch")
+  gatherData();
 }
 
 // function showIndividualRoom(event) {

@@ -14,14 +14,19 @@ export const roomsPromise = () => {
 };
 
 export const postData = (userID, date, roomNumber) => {
-  let info = {
-    "userID": userID,
-    "date": date,
-    "roomNumber": roomNumber
-  }
+  // let info = {
+  //   "userID": userID,
+  //   "date": date,
+  //   "roomNumber": roomNumber
+  // }
   return fetch('http://localhost:3001/api/v1/bookings', {
     method: 'POST',
-    body: JSON.stringify(info),
+    // eslint-disable-next-line max-len
+    body: JSON.stringify({
+      "userID": userID,
+      "date": date,
+      "roomNumber": roomNumber
+    }),
     headers: {
       'Content-type': 'application/json'
     }
