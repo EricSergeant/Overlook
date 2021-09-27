@@ -35,10 +35,10 @@
         <h2>Your Total Patronage</h2>
         <article class="total-spent" id="totalSpent"></article>
         <h2>Your Upcoming Bookings</h2>
-        <article class="search-results" id="noUpcomingStays"></article>
+        <article class="search-results-null" id="noUpcomingStays"></article>
         <article class="search-results" id="upcomingStays"></article>
         <h2>Your Past Bookings</h2>
-        <article class="search-results" id="noPastStays"></article>
+        <article class="search-results-null" id="noPastStays"></article>
         <article class="search-results" id="pastStays"></article>
     </section>
     <section class="booking-page" id="booking-page">
@@ -58,11 +58,11 @@
     <section class="new-booking" id="new-book-view">
       <form class="booking-form">
         <div>
-          <label for="date-picker">Choose a date:</label>
+          <label for="date-picker">Choose Your date:</label>
           <input type="date" name="choose-date" id="date-picker">
         </div>
         <section class="room-type-filter">
-          <label for="type-filter">Filter rooms by Type:</label>
+          <label for="type-filter">Filter Rooms by Type:</label>
           <select id="type-filter">
             <option value="all">All Rooms</option>
             <option value="suite">Suite</option>
@@ -72,14 +72,25 @@
             <!-- <input class="type-availability" id="typeAvailability" type="submit"></input> -->
           </select>
         </section>
-        <button class="submit" id="submit-search">View Rooms</button>
+        <button class="submit" id="submit-search">View Available Rooms</button>
       </form>
       <p class="error-message" id="date-error"></p>
-      <section class="availability-section" id="available-rooms">
-      </section>
-      <p> **PLACEHOLDER** Available rooms will display here</p>
+      <!-- <section class="availability-section" id="available-rooms-container">
+      </section> -->
       <article class="available-results" id="noAvailableRooms"></article>
-      <article class="available-results" id="availableRooms"></article>
+      <article class="available-results" id="availableRooms">
+        <article class="available-booking-card" id="room">
+          <div class="room-image">
+          </div>
+          <div class="room-info">
+          <p id="roomBeds"></p>
+          <p id="roomBeds"></p>
+          <p id="room-cost"></p>
+          <button class="booking-button" id="bookingButton"></button>
+          </div>
+          </article>
+        <p> **PLACEHOLDER** Available rooms will display here</p>
+      </article>
     </section>
 
   </main>

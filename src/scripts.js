@@ -11,7 +11,7 @@ import './css/base.scss';
 import './images/turing-logo.png'
 
 import domUpdates from './domUpdates'
-import { customerPromise, bookingsPromise, roomsPromise } from './apiCalls';
+import { customerPromise, bookingsPromise, roomsPromise, postData } from './apiCalls';
 import Customer from './Customer'
 import Booking from './Booking'
 import Room from './Rooms'
@@ -23,24 +23,34 @@ let dd = String(date.getDate()).padStart(2, '0')
 let mm = String(date.getMonth() + 1).padStart(2, '0')
 let yyyy = date.getFullYear()
 date = yyyy + '/' + mm + '/' + dd
+let parsedDate;
+// let bookingPost;
 
 // console.log('This is the JavaScript entry file - your code begins here.');
 
 // *** query selectors ***
 
 const viewRooms = document.getElementById('submit-search');
+const bookBtn = document.getElementById('availableRooms')
+// const bookingButton = document.querySelector('.booking-button')
 
 
 const chosenDate = document.querySelector('#date-picker');
 const chosenType = document.querySelector('select');
 const dateError = document.querySelector('#date-error')
-const typeAvailability = document.querySelector('#type-availability')
+// const typeAvailability = document.querySelector('#type-availability')
 const selectType = document.querySelector('#type-filter');
 
 
 
 // *** event listeners ***
+// eslint-disable-next-line max-len
 viewRooms.addEventListener('click', () => showAvailableRooms(chosenDate.value, chosenType.value, customer))
+// bookingButton.addEventListener('click', () => bookRoom())
+bookBtn.addEventListener('click', bookRoom)
+// bookARoom.addEventListener('click', function () {
+//   bookRoom();
+// })
 
 // *** event handlers ***
 // * on load *
@@ -119,11 +129,17 @@ function initBookings() {
 function renderUserDisplay() {
   domUpdates.displayUserName(customer)
   domUpdates.displayAmountSpent(customer)
-  let bookingsType = customer.bookings.filter(booking => {
+  // console.log('check bookings here:', customer.bookings)
+  let bookingsType = customer.bookings.forEach(booking => {
+    // console.log('booking.date:', booking.date)
+    // console.log('date compare:', booking.date < date)
     if (booking.date < date) {
       domUpdates.displayPastBookings(customer)
     } else {
-      domUpdates.dipslayUpcomingBookings(customer)
+      if (booking.date > date) {
+        // console.log('upcoming booking:', booking)
+        domUpdates.dipslayUpcomingBookings(customer)
+      }
     }
   })
   return bookingsType
@@ -132,16 +148,16 @@ function renderUserDisplay() {
 
 function showAvailableRooms(date, type, customer) {
   event.preventDefault()
-  let parsedDate = date.split("-").join("/");
+  parsedDate = date.split("-").join("/");
   // console.log('customer entry to f:', customer)
-  console.log('parsed date:', parsedDate)
+  // console.log('parsed date:', parsedDate)
   // console.log('today:', today)
   // console.log('allbookings:', allBookings)
   if (!date) {
     // eslint-disable-next-line max-len
-    return domUpdates.displayMessage(dateError, "Please choose a date in order to view available rooms")
+    return domUpdates.displayMessage(dateError, "Please choose a date in order to view available rooms.")
   } else if (parsedDate < today) {
-    return domUpdates.displayMessage(dateError, "Please pick a valid date")
+    return domUpdates.displayMessage(dateError, "Cannot book rooms in the past. Please pick a valid date.")
   } else {
     // console.log('customer in show:', customer.
     // filterAvailableRoomsByDate(parsedDate, allBookings))
@@ -158,3 +174,43 @@ function showAvailableRooms(date, type, customer) {
     domUpdates.displayRoomsAvailable(customer)  //cut allRooms
   }
 }
+
+
+function bookRoom() {
+  // console.log('hit it')
+  // let closeButton = bookARoom.closest('button')
+  let userIDPost = customer.id;
+  let datePost = parsedDate;
+  // let roomNumberPost = bookingButton.srcElement.id;
+  let roomNumberPost = event.target.closest('.available-booking-card').id.split("-")[1];
+  let fixedRoom = Number(roomNumberPost)
+  // console.log('booking room info:', userIDPost, datePost, roomNumberPost)
+  postBooking(userIDPost, datePost, fixedRoom);
+}
+
+function postBooking(userID, date, roomNumber) {
+  postData(userID, date, roomNumber)
+    .then((response) => {
+      if (!response.ok) {
+        console.log('POST ERROR')
+      } else {
+        renderPost()
+      }
+    })
+    .catch(err => {
+      console.log('POST error thrown:', err)
+    })
+}
+
+function renderPost() {
+  // console.log("ready to render, add re-fetch")
+  gatherData();
+}
+
+// function showIndividualRoom(event) {
+//   event.preventDefault();
+
+//   let individualRoom = event.target.closest('article').id;
+//   let currentRoom = findIndividualRoom(individualRoom.pop())
+//   domUpdates.show()
+// }

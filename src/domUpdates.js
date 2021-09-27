@@ -14,6 +14,8 @@ const domUpdates = {
   },
 
   displayAmountSpent(customer) {
+    totalSpent.innerHTML = '';
+
     if (customer.totalSpent === 0) {
       totalSpent.innerHTML +=
         `<p>Welcome first-time customer ${customer.name}!</p>`
@@ -36,50 +38,65 @@ const domUpdates = {
       </article>
       `;
     }
-
     // console.log('roomInfo in domUpdates:\n', customer.roomInfo)
+    // customer.roomInfo.forEach(item => {
+    //   console.log('items:', item.date)
+    // })
     // console.log('bookings in domUpdates:\n', customer.bookings)
+
     customer.roomInfo.forEach(myRooms => {
-      pastBookings.innerHTML += `
-      <article class="past-booking-card">
-      <div class="room-image">
-      </div>
-      <div class="room-info">
-      <p id="roomDate">${myRooms.date}</p>
-      <p id="roomType">${myRooms.room.roomType}</p>
-        <p id="roomBeds">${myRooms.room.numBeds} ${myRooms.room.bedSize}</p>
-        <p id="room-cost">$${myRooms.room.costPerNight} per night</p>
-      </div>
-      </article>
-      `;
+      // console.log('myRooms:', myRooms.date)
+      // console.log('parsed date:', parsedDate)
+      if (myRooms.date < "2021/09/28") {
+        // console.log('here:', myRooms.date)
+        pastBookings.innerHTML += `
+          <article class="past-booking-card">
+          <div class="room-image">
+          </div>
+          <div class="room-info">
+          <p id="roomDate">${myRooms.date}</p>
+          <p id="roomType">${myRooms.room.roomType}</p>
+            <p id="roomBeds">${myRooms.room.numBeds} ${myRooms.room.bedSize}</p>
+            <p id="room-cost">$${myRooms.room.costPerNight} per night</p>
+          </div>
+          </article>
+          `;
+      }
     })
 
   },
 
-  displayUpcomingBookings(customer) {
+  dipslayUpcomingBookings(customer) {
     upComingStays.innerHTML = '';
     noUpComingStays.innerHTML = '';
 
-    if (customer.bookings.length === 0) {
-      noPastBookings.innerHMTL = `
+    if (customer.length === 0) {
+      noUpComingStays.innerHMTL = `
       <article class="no-booking-card">
-      <p>You have no past stays.</p>
+      <p>You have no upcoming stays.</p>
       </article>
       `;
     }
+    // console.log(customer.roomInfo)
     customer.roomInfo.forEach(myRooms => {
-      pastBookings.innerHTML += `
-      <article class="past-booking-card">
+      // console.log('myRooms:', myRooms.date)
+      // console.log('parsed date:', parsedDate)
+      if (myRooms.date > "2021/09/28") {
+        upComingStays.innerHTML += `
+      <article class="upcoming-booking-card">
       <div class="room-image">
       </div>
       <div class="room-info">
         <p id="roomBeds">${myRooms.room.roomType}</p>
+        <p id="roomNum">Room Number ${myRooms.room.number}</p>
         <p id="roomBeds">${myRooms.room.numBeds} ${myRooms.room.bedSize}</p>
         <p id="room-cost">$${myRooms.room.costPerNight} per night</p>
       </div>
       </article>
       `;
+      }
     })
+
   },
 
   displayMessage(element, info) {
@@ -92,21 +109,32 @@ const domUpdates = {
 
     // console.log('customer in DOM', customer)
     // console.log('available room data:', rooms)
-    console.log('available in DOM:', customer.filteredType)
-
-    customer.filteredType.forEach(openRooms => {
+    // console.log('available in DOM:', customer.filteredType)
+    if (!customer.filteredType.length) {
       availableRooms.innerHTML += `
-        <article class="past-booking-card">
+      <p class="error-no-rooms">
+      So sorry, there are no more rooms available for that date/type.  Please adjust your search and try again.</p>
+      `
+    } else {
+
+      // let holding = [];
+
+      customer.filteredType.forEach(openRooms => {
+        // holding.push(openRooms.number)
+        availableRooms.innerHTML += `
+        <article class="available-booking-card" id="room-${openRooms.number}">
         <div class="room-image">
         </div>
         <div class="room-info">
-          <p id="roomBeds">${openRooms.roomType}</p>
-          <p id="roomBeds">${openRooms.numBeds} ${openRooms.bedSize}</p>
-          <p id="room-cost">$${openRooms.costPerNight} per night</p>
+        <p id="roomBeds">${openRooms.roomType}</p>
+        <p id="roomBeds">${openRooms.numBeds} ${openRooms.bedSize}</p>
+        <p id="room-cost">$${openRooms.costPerNight} per night</p>
+        <button class="booking-button" id="bookingButton-${openRooms.number}">Click this room to book it!</button>
         </div>
         </article>
         `;
-    })
+      })
+    }
     /* old version:
     customer.availableRooms.forEach(openRooms => {
       openRooms.forEach(item => {
@@ -127,6 +155,7 @@ const domUpdates = {
     */
 
   }
+
 
 
 }
