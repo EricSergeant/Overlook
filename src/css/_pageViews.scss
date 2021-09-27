@@ -16,10 +16,13 @@ nav {
 
 
 // ** profile page **
-.login-page {
-  @include flex-center;
-}
+// .login-page {
+//   @include flex-center;
+//   // align-content: center;
 
+// }
+
+.login-page,
 .profile-page,
 .new-booking,
 .availability-section {
