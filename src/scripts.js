@@ -16,14 +16,14 @@ import Customer from './Customer'
 import Booking from './Booking'
 import Room from './Rooms'
 
-let customerData, bookingsData, roomsData, allBookings, allRooms, customer;
+// eslint-disable-next-line max-len
+let customerData, bookingsData, roomsData, allBookings, allRooms, customer, parsedDate, usernameID;
 let today = "2021/09/25";
 let date = new Date();
 let dd = String(date.getDate()).padStart(2, '0')
 let mm = String(date.getMonth() + 1).padStart(2, '0')
 let yyyy = date.getFullYear()
 date = yyyy + '/' + mm + '/' + dd
-let parsedDate;
 
 // console.log('This is the JavaScript entry file - your code begins here.');
 
@@ -35,8 +35,9 @@ const profileBtn = document.getElementById('navProfile');
 const bookingBtn = document.getElementById('navBooking');
 const logoutBtn = document.getElementById('navLogout');
 
-
-const clearSearch = document.getElementById('type-filter')
+const submitLogin = document.getElementById('login-form-submit');
+const loginForm = document.getElementById('login-form');
+const clearSearch = document.getElementById('type-filter');
 
 const chosenDate = document.querySelector('#date-picker');
 const chosenType = document.querySelector('select');
@@ -52,11 +53,45 @@ bookBtn.addEventListener('click', bookRoom)
 profileBtn.addEventListener('click', domUpdates.profileView)
 bookingBtn.addEventListener('click', domUpdates.bookingView)
 logoutBtn.addEventListener('click', domUpdates.logout)
+submitLogin.addEventListener('click', (e) => {
+  e.preventDefault();
+  const username = loginForm.username.value;
+  const password = loginForm.password.value;
+
+  if (username === "customer50" && password === "overlook2021") {
+    console.log('successful login')
+    location.reload();
+  } else {
+    console.log('wrong login attempt')
+  }
+})
+
 
 // *** event handlers ***
 // * on load *
 window.addEventListener('load', gatherData);
 
+// *** login ***
+// function checkLogin(event) {
+//   if (!username.value && !password.value) {
+//     preventDefault(event)
+//     console.log('no login info provided')
+//   } else if (password.value !== "overlook2021") {
+//     preventDefault(event)
+//     console.log('wrong password entered')
+//   } else if (username.value !== "customer50") {
+//     preventDefault(event)
+//     console.log('wrong username entered')
+//   } else {
+//     preventDefault(event)
+//     confirmedUser(username.value)
+//   }
+// }
+
+// function confirmedUser(username) {
+//   usernameID = username.slice(8, 10)
+//   usernameID = Number.parseInt(usernameID)
+// }
 
 // *** data initialization ***
 function gatherData() {

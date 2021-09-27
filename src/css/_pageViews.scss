@@ -30,6 +30,12 @@ nav {
   text-align: center;
 }
 
+#login-form-submit {
+  background-color: $highlight-color;
+  box-shadow: 0 2px 4px 0 $dark-color;
+  border-radius: 10px;
+}
+
 .search-results,
 .total-spent,
 .room-info {
