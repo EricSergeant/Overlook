@@ -93,21 +93,31 @@ const domUpdates = {
     // console.log('customer in DOM', customer)
     // console.log('available room data:', rooms)
     console.log('available in DOM:', customer.filteredType)
-
-    customer.filteredType.forEach(openRooms => {
+    if (!customer.filteredType.length) {
       availableRooms.innerHTML += `
-        <article class="available-booking-card" id="room${openRooms.number}">
+      <p class="error-no-rooms">
+      So sorry, there are no more rooms available for that date/type.  Please adjust your search and try again.</p>
+      `
+    } else {
+
+      // let holding = [];
+
+      customer.filteredType.forEach(openRooms => {
+        // holding.push(openRooms.number)
+        availableRooms.innerHTML += `
+        <article class="available-booking-card" id="room-${openRooms.number}">
         <div class="room-image">
         </div>
         <div class="room-info">
-          <p id="roomBeds">${openRooms.roomType}</p>
-          <p id="roomBeds">${openRooms.numBeds} ${openRooms.bedSize}</p>
-          <p id="room-cost">$${openRooms.costPerNight} per night</p>
-          <button class="booking-button" id="bookingButton${openRooms.number}">Book this room!</button>
+        <p id="roomBeds">${openRooms.roomType}</p>
+        <p id="roomBeds">${openRooms.numBeds} ${openRooms.bedSize}</p>
+        <p id="room-cost">$${openRooms.costPerNight} per night</p>
+        <button class="booking-button" id="bookingButton-${openRooms.number}">Book this room!</button>
         </div>
         </article>
         `;
-    })
+      })
+    }
     /* old version:
     customer.availableRooms.forEach(openRooms => {
       openRooms.forEach(item => {

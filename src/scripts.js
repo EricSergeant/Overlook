@@ -23,24 +23,31 @@ let dd = String(date.getDate()).padStart(2, '0')
 let mm = String(date.getMonth() + 1).padStart(2, '0')
 let yyyy = date.getFullYear()
 date = yyyy + '/' + mm + '/' + dd
+let parsedDate;
 
 // console.log('This is the JavaScript entry file - your code begins here.');
 
 // *** query selectors ***
 
 const viewRooms = document.getElementById('submit-search');
+const bookingButton = document.querySelector('.booking-button')
 
 
 const chosenDate = document.querySelector('#date-picker');
 const chosenType = document.querySelector('select');
 const dateError = document.querySelector('#date-error')
-const typeAvailability = document.querySelector('#type-availability')
+// const typeAvailability = document.querySelector('#type-availability')
 const selectType = document.querySelector('#type-filter');
 
 
 
 // *** event listeners ***
+// eslint-disable-next-line max-len
 viewRooms.addEventListener('click', () => showAvailableRooms(chosenDate.value, chosenType.value, customer))
+bookingButton.addEventListener('click', () => bookRoom())
+// bookARoom.addEventListener('click', function () {
+//   bookRoom();
+// })
 
 // *** event handlers ***
 // * on load *
@@ -132,7 +139,7 @@ function renderUserDisplay() {
 
 function showAvailableRooms(date, type, customer) {
   event.preventDefault()
-  let parsedDate = date.split("-").join("/");
+  parsedDate = date.split("-").join("/");
   // console.log('customer entry to f:', customer)
   console.log('parsed date:', parsedDate)
   // console.log('today:', today)
@@ -159,10 +166,22 @@ function showAvailableRooms(date, type, customer) {
   }
 }
 
-function showIndividualRoom(event) {
-  event.preventDefault();
 
-  let individualRoom = event.target.closest('article').id;
-  let currentRoom = findIndividualRoom(individualRoom.pop())
-  domUpdates.show()
+function bookRoom() {
+  console.log('hit it')
+  // let closeButton = bookARoom.closest('button')
+  let userIDPost = 5;
+  let datePost = parsedDate;
+  let roomNumberPost = bookingButton.srcElement.id;
+  console.log('booking room info:', userIDPost, datePost, roomNumberPost)
 }
+
+// function
+
+// function showIndividualRoom(event) {
+//   event.preventDefault();
+
+//   let individualRoom = event.target.closest('article').id;
+//   let currentRoom = findIndividualRoom(individualRoom.pop())
+//   domUpdates.show()
+// }
