@@ -129,11 +129,17 @@ function initBookings() {
 function renderUserDisplay() {
   domUpdates.displayUserName(customer)
   domUpdates.displayAmountSpent(customer)
-  let bookingsType = customer.bookings.filter(booking => {
+  // console.log('check bookings here:', customer.bookings)
+  let bookingsType = customer.bookings.forEach(booking => {
+    // console.log('booking.date:', booking.date)
+    // console.log('date compare:', booking.date < date)
     if (booking.date < date) {
       domUpdates.displayPastBookings(customer)
     } else {
-      domUpdates.dipslayUpcomingBookings(customer)
+      if (booking.date > date) {
+        // console.log('upcoming booking:', booking)
+        domUpdates.dipslayUpcomingBookings(customer)
+      }
     }
   })
   return bookingsType
@@ -144,7 +150,7 @@ function showAvailableRooms(date, type, customer) {
   event.preventDefault()
   parsedDate = date.split("-").join("/");
   // console.log('customer entry to f:', customer)
-  console.log('parsed date:', parsedDate)
+  // console.log('parsed date:', parsedDate)
   // console.log('today:', today)
   // console.log('allbookings:', allBookings)
   if (!date) {
@@ -178,7 +184,7 @@ function bookRoom() {
   // let roomNumberPost = bookingButton.srcElement.id;
   let roomNumberPost = event.target.closest('.available-booking-card').id.split("-")[1];
   let fixedRoom = Number(roomNumberPost)
-  console.log('booking room info:', userIDPost, datePost, roomNumberPost)
+  // console.log('booking room info:', userIDPost, datePost, roomNumberPost)
   postBooking(userIDPost, datePost, fixedRoom);
 }
 
@@ -197,7 +203,7 @@ function postBooking(userID, date, roomNumber) {
 }
 
 function renderPost() {
-  console.log("ready to render, add re-fetch")
+  // console.log("ready to render, add re-fetch")
   gatherData();
 }
 
