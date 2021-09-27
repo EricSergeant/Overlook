@@ -7,6 +7,7 @@ const noUpComingStays = document.getElementById('noUpcomingStays');
 const availableToBook = document.getElementById('available-rooms');
 const availableRooms = document.getElementById('availableRooms');
 
+
 const domUpdates = {
 
   displayUserName(customer) {
@@ -154,9 +155,19 @@ const domUpdates = {
     })
     */
 
+  },
+
+  profileView() {
+    console.log('click profileView in domUpdates')
+  },
+
+  bookingView() {
+    console.log('click bookingView in domUpdates')
+  },
+
+  logout() {
+    console.log('click logout in domUpdates')
   }
-
-
 
 }
 

@@ -29,16 +29,18 @@ let parsedDate;
 // console.log('This is the JavaScript entry file - your code begins here.');
 
 // *** query selectors ***
-
 const viewRooms = document.getElementById('submit-search');
 const bookBtn = document.getElementById('availableRooms')
-// const bookingButton = document.querySelector('.booking-button')
+
+const profileBtn = document.getElementById('navProfile');
+const bookingBtn = document.getElementById('navBooking');
+const logoutBtn = document.getElementById('navLogout');
+
 
 
 const chosenDate = document.querySelector('#date-picker');
 const chosenType = document.querySelector('select');
 const dateError = document.querySelector('#date-error')
-// const typeAvailability = document.querySelector('#type-availability')
 const selectType = document.querySelector('#type-filter');
 
 
@@ -48,6 +50,9 @@ const selectType = document.querySelector('#type-filter');
 viewRooms.addEventListener('click', () => showAvailableRooms(chosenDate.value, chosenType.value, customer))
 // bookingButton.addEventListener('click', () => bookRoom())
 bookBtn.addEventListener('click', bookRoom)
+profileBtn.addEventListener('click', domUpdates.profileView)
+bookingBtn.addEventListener('click', domUpdates.bookingView)
+logoutBtn.addEventListener('click', domUpdates.logout)
 // bookARoom.addEventListener('click', function () {
 //   bookRoom();
 // })
