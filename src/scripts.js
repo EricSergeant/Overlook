@@ -60,10 +60,11 @@ submitLogin.addEventListener('click', (e) => {
 
   if (username === "customer50" && password === "overlook2021") {
     console.log('successful login')
-    location.reload();
+    // location.reload();
   } else {
     console.log('wrong login attempt')
   }
+  domUpdates.login()
 })
 
 
