@@ -129,10 +129,14 @@ function initBookings() {
 function renderUserDisplay() {
   domUpdates.displayUserName(customer)
   domUpdates.displayAmountSpent(customer)
+  domUpdates.displayPastBookings(customer)
+  domUpdates.dipslayUpcomingBookings(customer)
+
   // console.log('check bookings here:', customer.bookings)
   let bookingsType = customer.bookings.forEach(booking => {
     // console.log('booking.date:', booking.date)
     // console.log('date compare:', booking.date < date)
+
     if (booking.date < date) {
       domUpdates.displayPastBookings(customer)
     } else {
@@ -141,6 +145,8 @@ function renderUserDisplay() {
         domUpdates.dipslayUpcomingBookings(customer)
       }
     }
+
+
   })
   return bookingsType
 }
