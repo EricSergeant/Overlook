@@ -12,7 +12,7 @@
     <div class="nav-title-div">
       <h1>The Overlook Hotel</h1>
     </div>
-    <nav class="all-nav-buttons" id="allNavButtons">
+    <nav class="all-nav-buttons hidden" id="allNavButtons">
       <button class="nav-button" id="navBooking">Make New Booking</button>
       <button class="nav-button" id="navProfile">My Profile</button>
       <!-- <button class="nav-button hidden" id="navLogin">Log In</button> -->
@@ -21,10 +21,21 @@
  
   </header>
   <main>
-    <section class="log-in-page hidden" id="login-page">
-      <p>Login info to go here...</p>
+    <section class="login-page" id="login-page">
+      <!-- <div class="login-container">
+        <label for="uname"><b>Username</b></label>
+        <input id="uname" type="text" placeholder="Enter Username" name="uname" required>
+        <label for="psw"><b>Password</b></label>
+        <input id="psw" type="password" placeholder="Enter Password" name="psw" required>  
+        <button id="submitLogin" type="submit">Login</button>
+      </div> -->
+      <form id="login-form">
+        <input type="text" name="username" id="username-field" class="login-form-field" placeholder="Username">
+        <input type="password" name="password" id="password-field" class="login-form-field" placeholder="Password">
+        <input type="submit" value="Login" id="login-form-submit">
+      </form>
     </section>
-    <section class="profile-page" id="profile-page">
+    <section class="profile-page hidden" id="profile-page">
         <h2 class="welcome-msg" id="welcomeMsg">Welcome, User!</h2>
         <h2>Your Total Patronage</h2>
         <article class="total-spent" id="totalSpent"></article>

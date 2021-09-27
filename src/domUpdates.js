@@ -154,12 +154,24 @@ const domUpdates = {
     profilePage.classList.add('hidden')
   },
 
+  navView() {
+    console.log('click navView in domUpdates')
+    navMenu.classList.remove('hidden')
+  },
+
   logout() {
     console.log('click logout in domUpdates')
     logOut.classList.remove('hidden')
     findRoom.classList.add('hidden')
     profilePage.classList.add('hidden')
     navMenu.classList.add('hidden')
+    location.reload();
+  },
+
+  login() {
+    navMenu.classList.remove('hidden')
+    profilePage.classList.remove('hidden')
+    logOut.classList.add('hidden')
   },
 
   show(element) {
