@@ -101,7 +101,7 @@ function instantiateRandomUser() {
 }
 
 function initCustomer() {
-  customer = new Customer(customerData.customers[5]);
+  customer = new Customer(customerData.customers[6]);
   customer.createCustomerBookings(bookingsData.bookings)
   customer.createCustomerRooms(roomsData.rooms)
   customer.calcCustomerTotalSpent(bookingsData.bookings, roomsData.rooms)
@@ -215,6 +215,7 @@ function postBooking(userID, date, roomNumber) {
 
 function renderPost() {
   // console.log("ready to render, add re-fetch")
+  // console.log('posted data', allBookings)
   gatherData();
 }
 

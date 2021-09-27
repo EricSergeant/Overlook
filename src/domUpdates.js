@@ -88,6 +88,7 @@ const domUpdates = {
       <div class="room-image">
       </div>
       <div class="room-info">
+        <p id="roomDate">Your upcoming visit for ${myRooms.date}</p>
         <p id="roomBeds">${myRooms.room.roomType}</p>
         <p id="roomNum">Room Number ${myRooms.room.number}</p>
         <p id="roomBeds">${myRooms.room.numBeds} ${myRooms.room.bedSize}</p>
