@@ -17,7 +17,7 @@ import Booking from './Booking'
 import Room from './Rooms'
 
 // eslint-disable-next-line max-len
-let customerData, bookingsData, roomsData, allBookings, allRooms, customer, parsedDate, usernameID;
+let customerData, bookingsData, roomsData, allBookings, allRooms, customer, parsedDate, username;
 let today = "2021/09/25";
 let date = new Date();
 let dd = String(date.getDate()).padStart(2, '0')
@@ -55,7 +55,7 @@ bookingBtn.addEventListener('click', domUpdates.bookingView)
 logoutBtn.addEventListener('click', domUpdates.logout)
 submitLogin.addEventListener('click', (e) => {
   e.preventDefault();
-  const username = loginForm.username.value;
+  username = loginForm.username.value;
   const password = loginForm.password.value;
 
   if (username === "customer50" && password === "overlook2021") {
@@ -64,13 +64,17 @@ submitLogin.addEventListener('click', (e) => {
   } else {
     console.log('wrong login attempt')
   }
-  domUpdates.login()
+  username = username.slice(8, 10)
+  console.log('sliced number login:', username)
+  gatherData();
+  domUpdates.login();
 })
 
 
 // *** event handlers ***
 // * on load *
-window.addEventListener('load', gatherData);
+
+// window.addEventListener('load', gatherData);
 
 // *** login ***
 // function checkLogin(event) {
@@ -133,7 +137,8 @@ function instantiateRandomUser() {
 }
 
 function initCustomer() {
-  customer = new Customer(customerData.customers[6]);
+  customer = new Customer(customerData.customers[username - 1]);
+  console.log('customer on scripts:', customer)
   customer.createCustomerBookings(bookingsData.bookings)
   customer.createCustomerRooms(roomsData.rooms)
   customer.calcCustomerTotalSpent(bookingsData.bookings, roomsData.rooms)
