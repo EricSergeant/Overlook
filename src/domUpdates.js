@@ -4,18 +4,24 @@ const pastBookings = document.getElementById('pastStays');
 const noPastBookings = document.getElementById('noPastStays');
 const upComingStays = document.getElementById('upcomingStays');
 const noUpComingStays = document.getElementById('noUpcomingStays');
-const availableToBook = document.getElementById('available-rooms');
+// const availableToBook = document.getElementById('available-rooms');
 const availableRooms = document.getElementById('availableRooms');
+
+const profilePage = document.getElementById('profile-page');
+const findRoom = document.getElementById('new-book-view')
+const logOut = document.getElementById('login-page')
+const navMenu = document.getElementById('allNavButtons')
+
 
 const domUpdates = {
 
   displayUserName(customer) {
     userMsg.innerText = `Greetings ${customer.name}!`
+
   },
 
   displayAmountSpent(customer) {
     totalSpent.innerHTML = '';
-
     if (customer.totalSpent === 0) {
       totalSpent.innerHTML +=
         `<p>Welcome first-time customer ${customer.name}!</p>`
@@ -67,6 +73,7 @@ const domUpdates = {
   },
 
   dipslayUpcomingBookings(customer) {
+    availableRooms.innerHTML = '';
     upComingStays.innerHTML = '';
     noUpComingStays.innerHTML = '';
 
@@ -87,6 +94,7 @@ const domUpdates = {
       <div class="room-image">
       </div>
       <div class="room-info">
+        <p id="roomDate">Your upcoming visit for ${myRooms.date}</p>
         <p id="roomBeds">${myRooms.room.roomType}</p>
         <p id="roomNum">Room Number ${myRooms.room.number}</p>
         <p id="roomBeds">${myRooms.room.numBeds} ${myRooms.room.bedSize}</p>
@@ -117,10 +125,7 @@ const domUpdates = {
       `
     } else {
 
-      // let holding = [];
-
       customer.filteredType.forEach(openRooms => {
-        // holding.push(openRooms.number)
         availableRooms.innerHTML += `
         <article class="available-booking-card" id="room-${openRooms.number}">
         <div class="room-image">
@@ -135,28 +140,35 @@ const domUpdates = {
         `;
       })
     }
-    /* old version:
-    customer.availableRooms.forEach(openRooms => {
-      openRooms.forEach(item => {
-        // console.log('item in dom:', item.costPerNight)
-        availableRooms.innerHTML += `
-        <article class="past-booking-card">
-        <div class="room-image">
-        </div>
-        <div class="room-info">
-          <p id="roomBeds">${item.roomType}</p>
-          <p id="roomBeds">${item.numBeds} ${item.bedSize}</p>
-          <p id="room-cost">$${item.costPerNight} per night</p>
-        </div>
-        </article>
-        `;
-      })
-    })
-    */
+  },
 
+  profileView() {
+    console.log('click profileView in domUpdates')
+    profilePage.classList.remove('hidden')
+    findRoom.classList.add('hidden')
+  },
+
+  bookingView() {
+    console.log('click bookingView in domUpdates')
+    findRoom.classList.remove('hidden')
+    profilePage.classList.add('hidden')
+  },
+
+  logout() {
+    console.log('click logout in domUpdates')
+    logOut.classList.remove('hidden')
+    findRoom.classList.add('hidden')
+    profilePage.classList.add('hidden')
+    navMenu.classList.add('hidden')
+  },
+
+  show(element) {
+    element.classList.remove('hidden')
+  },
+
+  hide(element) {
+    element.classList.add('hidden')
   }
-
-
 
 }
 
