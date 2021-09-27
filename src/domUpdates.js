@@ -73,6 +73,7 @@ const domUpdates = {
   },
 
   dipslayUpcomingBookings(customer) {
+    availableRooms.innerHTML = '';
     upComingStays.innerHTML = '';
     noUpComingStays.innerHTML = '';
 
@@ -124,10 +125,7 @@ const domUpdates = {
       `
     } else {
 
-      // let holding = [];
-
       customer.filteredType.forEach(openRooms => {
-        // holding.push(openRooms.number)
         availableRooms.innerHTML += `
         <article class="available-booking-card" id="room-${openRooms.number}">
         <div class="room-image">

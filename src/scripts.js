@@ -24,7 +24,6 @@ let mm = String(date.getMonth() + 1).padStart(2, '0')
 let yyyy = date.getFullYear()
 date = yyyy + '/' + mm + '/' + dd
 let parsedDate;
-// let bookingPost;
 
 // console.log('This is the JavaScript entry file - your code begins here.');
 
@@ -37,6 +36,7 @@ const bookingBtn = document.getElementById('navBooking');
 const logoutBtn = document.getElementById('navLogout');
 
 
+const clearSearch = document.getElementById('type-filter')
 
 const chosenDate = document.querySelector('#date-picker');
 const chosenType = document.querySelector('select');
@@ -48,14 +48,10 @@ const selectType = document.querySelector('#type-filter');
 // *** event listeners ***
 // eslint-disable-next-line max-len
 viewRooms.addEventListener('click', () => showAvailableRooms(chosenDate.value, chosenType.value, customer))
-// bookingButton.addEventListener('click', () => bookRoom())
 bookBtn.addEventListener('click', bookRoom)
 profileBtn.addEventListener('click', domUpdates.profileView)
 bookingBtn.addEventListener('click', domUpdates.bookingView)
 logoutBtn.addEventListener('click', domUpdates.logout)
-// bookARoom.addEventListener('click', function () {
-//   bookRoom();
-// })
 
 // *** event handlers ***
 // * on load *
@@ -106,7 +102,6 @@ function initCustomer() {
   customer.createCustomerRooms(roomsData.rooms)
   customer.calcCustomerTotalSpent(bookingsData.bookings, roomsData.rooms)
   // console.log('instantiated customer', customer)
-  // let expenses = customer.calcCustomerTotalSpent(bookingsData, roomsData)
 }
 
 function initRooms() {
@@ -120,7 +115,6 @@ function initRooms() {
   return allRooms;
 }
 
-// * do we need this?  Part of customer constructor *
 function initBookings() {
   allBookings = [];
   bookingsData.bookings.forEach(booking => {
@@ -175,14 +169,10 @@ function showAvailableRooms(date, type, customer) {
     // eslint-disable-next-line max-len
     domUpdates.displayMessage(dateError, "These are the available rooms for that date:")
 
-    /* original on hold:
-    customer.filterAvailableRoomsByDate(parsedDate, allRooms, allBookings)
-    customer.filterAvailableRoomsByType(selectType.value)
-    */
-    // customer.filterUnavailableRoomsByDate('2020/04/22', bookingsData.bookings); // TEST VERSION
     customer.filterUnavailableRoomsByDate(date, bookingsData.bookings);
     customer.filterRoomsByType(roomsData.rooms, selectType.value)
-    domUpdates.displayRoomsAvailable(customer)  //cut allRooms
+    domUpdates.displayRoomsAvailable(customer)
+
   }
 }
 
@@ -197,6 +187,7 @@ function bookRoom() {
   let fixedRoom = Number(roomNumberPost)
   // console.log('booking room info:', userIDPost, datePost, roomNumberPost)
   domUpdates.profileView();
+  clearSearch.selectedIndex = 0;
   postBooking(userIDPost, datePost, fixedRoom);
 }
 
@@ -221,10 +212,3 @@ function renderPost() {
   gatherData();
 }
 
-// function showIndividualRoom(event) {
-//   event.preventDefault();
-
-//   let individualRoom = event.target.closest('article').id;
-//   let currentRoom = findIndividualRoom(individualRoom.pop())
-//   domUpdates.show()
-// }
