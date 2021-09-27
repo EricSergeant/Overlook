@@ -196,6 +196,7 @@ function bookRoom() {
   let roomNumberPost = event.target.closest('.available-booking-card').id.split("-")[1];
   let fixedRoom = Number(roomNumberPost)
   // console.log('booking room info:', userIDPost, datePost, roomNumberPost)
+  domUpdates.profileView();
   postBooking(userIDPost, datePost, fixedRoom);
 }
 
@@ -205,6 +206,7 @@ function postBooking(userID, date, roomNumber) {
       if (!response.ok) {
         console.log('POST ERROR')
       } else {
+        console.log('rendering POST')
         renderPost()
       }
     })
@@ -215,7 +217,7 @@ function postBooking(userID, date, roomNumber) {
 
 function renderPost() {
   // console.log("ready to render, add re-fetch")
-  // console.log('posted data', allBookings)
+  console.log('posted data', allBookings)
   gatherData();
 }
 

@@ -14,7 +14,12 @@ nav {
   // background: $highlight-color;
 }
 
+
 // ** profile page **
+.login-page {
+  @include flex-center;
+}
+
 .profile-page,
 .new-booking,
 .availability-section {
