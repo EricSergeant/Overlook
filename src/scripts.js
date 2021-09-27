@@ -128,15 +128,18 @@ function initData(data) {
 }
 
 // * note: not using this function, hardcoded user on following function *
-function instantiateRandomUser() {
-  let randomUser = customerData.customers[Math
-    .round(Math.random() * customerData.customers.length)];
-  // let randomUser = customerData.customers[5];
-  // console.log('random user result:', randomUser)
-  // domUpdates.displayUserName(currentUser);
-}
+// function instantiateRandomUser() {
+//   let randomUser = customerData.customers[Math
+//     .round(Math.random() * customerData.customers.length)];
+//   // let randomUser = customerData.customers[5];
+//   // console.log('random user result:', randomUser)
+//   // domUpdates.displayUserName(currentUser);
+// }
 
 function initCustomer() {
+  // ** testing version:
+  // customer = new Customer(customerData.customers[5]);
+  // ** final, live version:
   customer = new Customer(customerData.customers[username - 1]);
   console.log('customer on scripts:', customer)
   customer.createCustomerBookings(bookingsData.bookings)
