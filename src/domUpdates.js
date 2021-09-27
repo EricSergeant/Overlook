@@ -4,14 +4,12 @@ const pastBookings = document.getElementById('pastStays');
 const noPastBookings = document.getElementById('noPastStays');
 const upComingStays = document.getElementById('upcomingStays');
 const noUpComingStays = document.getElementById('noUpcomingStays');
-// const availableToBook = document.getElementById('available-rooms');
 const availableRooms = document.getElementById('availableRooms');
 
 const profilePage = document.getElementById('profile-page');
 const findRoom = document.getElementById('new-book-view')
 const logOut = document.getElementById('login-page')
 const navMenu = document.getElementById('allNavButtons')
-
 
 const domUpdates = {
 
@@ -26,8 +24,9 @@ const domUpdates = {
       totalSpent.innerHTML +=
         `<p>Welcome first-time customer ${customer.name}!</p>`
     } else {
-      // eslint-disable-next-line max-len
-      totalSpent.innerHTML += `<p>You've spent $${customer.totalSpent} to date.  Thank you for returning to us!</p>`
+      totalSpent.innerHTML +=
+        `<p>You've spent $${customer.totalSpent} to date.
+        Thank you for returning to us!</p>`
     }
   },
 
