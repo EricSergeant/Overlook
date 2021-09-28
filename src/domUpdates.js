@@ -58,7 +58,7 @@ const domUpdates = {
           <article class="past-booking-card">
           <div class="room-info">
             <div class="room-image">
-              <img src="./images/Overlook_room.jpg" alt="interior view of Overlook hotel room" height="50%" width="75%">
+              <img src="./images/Overlook_room.jpg" alt="interior view of Overlook hotel room" height="75%" width="75%">
             </div>
           <p id="roomDate">${myRooms.date}</p>
           <p id="roomType">${myRooms.room.roomType}</p>

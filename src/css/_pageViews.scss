@@ -37,6 +37,13 @@ nav {
   background-color: $highlight-color;
   box-shadow: 0 2px 4px 0 $dark-color;
   border-radius: 10px;
+  cursor: pointer; 
+  margin: 1em;
+}
+
+#login-form-submit:active {
+  transform: scale(1.20);
+  box-shadow: 0 4px 8px 0 red;
 }
 
 .search-results,
