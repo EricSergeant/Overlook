@@ -21,10 +21,16 @@ body {
 
 button {
   cursor: pointer; 
-  padding: 0.5em;
+  // padding: 0.5em;
   margin: 1em;
   background-color: $highlight-color;
-  box-shadow: 0 2px 4px 0 darkred;
+  box-shadow: 0 2px 4px 0 $dark-color;
+  border-radius: 5px;
+}
+
+button:active {
+  transform: scale(1.20);
+  box-shadow: 0 4px 8px 0 red;
 }
 
 #bookingButton {
@@ -32,7 +38,24 @@ button {
 }
 
 h1 {
-  font-size: 2rem
+  font-size: 2rem;
+  text-shadow: 1px 1px $secondary-color;
+}
+
+h2 {
+  font-size: 1.5rem;
+  text-shadow: 1px 1px $secondary-color;
+}
+
+main {
+  @include flex-center;
+}
+
+img {
+  box-shadow: 0 3px 6px 0 $dark-color;
+  border-radius: 5px;
+  margin: 2em;
+  
 }
 
 .hidden {

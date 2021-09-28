@@ -56,9 +56,10 @@ const domUpdates = {
         // console.log('here:', myRooms.date)
         pastBookings.innerHTML += `
           <article class="past-booking-card">
-          <div class="room-image">
-          </div>
           <div class="room-info">
+            <div class="room-image">
+              <img src="./images/Overlook_room.jpg" alt="interior view of Overlook hotel room" height="50%" width="75%">
+            </div>
           <p id="roomDate">${myRooms.date}</p>
           <p id="roomType">${myRooms.room.roomType}</p>
             <p id="roomBeds">${myRooms.room.numBeds} ${myRooms.room.bedSize}</p>
@@ -89,9 +90,10 @@ const domUpdates = {
       if (myRooms.date > "2021/09/28") {
         upComingStays.innerHTML += `
       <article class="upcoming-booking-card">
-      <div class="room-image">
-      </div>
       <div class="room-info">
+        <div class="room-image">
+          <img src="./images/Overlook_room.jpg" alt="interior view of Overlook hotel room" height="75%" width="75%">
+        </div>
         <p id="roomDate">Your upcoming visit for ${myRooms.date}</p>
         <p id="roomBeds">${myRooms.room.roomType}</p>
         <p id="roomNum">Room Number ${myRooms.room.number}</p>
