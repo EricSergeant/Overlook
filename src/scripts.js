@@ -104,7 +104,7 @@ function initData(data) {
 
 function initCustomer() {
   // ** testing version:
-  customer = new Customer(customerData.customers[20]);
+  customer = new Customer(customerData.customers[25]);
   // ** final, live version:
   // customer = new Customer(customerData.customers[username - 1]);
   // console.log('customer on scripts:', customer)

@@ -68,7 +68,6 @@ const domUpdates = {
           `;
       }
     })
-
   },
 
   dipslayUpcomingBookings(customer) {
@@ -103,7 +102,6 @@ const domUpdates = {
       `;
       }
     })
-
   },
 
   displayMessage(element, info) {
@@ -113,7 +111,6 @@ const domUpdates = {
 
   displayRoomsAvailable(customer) {
     availableRooms.innerHTML = '';
-
     // console.log('customer in DOM', customer)
     // console.log('available room data:', rooms)
     // console.log('available in DOM:', customer.filteredType)
@@ -123,7 +120,6 @@ const domUpdates = {
       So sorry, there are no more rooms available for that date/type.  Please adjust your search and try again.</p>
       `
     } else {
-
       customer.filteredType.forEach(openRooms => {
         availableRooms.innerHTML += `
         <article class="available-booking-card" id="room-${openRooms.number}">
