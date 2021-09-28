@@ -29,8 +29,8 @@ class Customer {
       })
       return roomsBooked;
     }, []);
-    // console.log('myRoomInfo:', myRoomInfo);
     this.roomInfo = myRoomInfo;
+    // console.log('myRoomInfo:', this.roomInfo);
     return myRoomInfo;
   }
 
@@ -48,13 +48,18 @@ class Customer {
   }
 
   filterUnavailableRoomsByDate(date, bookings) {
-    this.unavailableRooms = bookings.filter(booking => booking.date === date)
+    // console.log('booking room number', bookings.forEach(booking => booking.roomNumber))
+    // console.log('date in filter rooms', date)
+    // console.log('fixed date in customer', date.split("-").join("/"))
+    // console.log('booking room number', bookings.map(obj => obj.date))
+    this.unavailableRooms = bookings.filter(booking => booking.date === date.split("-").join("/"))
       .map(booking => booking.roomNumber)
     console.log('unavailable rooms:', this.unavailableRooms)
     return this.unavailableRooms;
   }
 
   filterRoomsByType(rooms, roomType) {
+    console.log('room type in customer:', roomType)
     if (roomType === 'all') {
       this.filteredType = this.getAvailableRooms(rooms)
     } else {
@@ -68,8 +73,22 @@ class Customer {
   }
 
   getAvailableRooms(rooms) {
-    return rooms.filter(room => !this.availableRoomNums.includes(room.number))
+    // * original below *
+    // return rooms.filter(room => !this.availableRoomNums.includes(room.number))
+    return rooms.filter(room => !this.unavailableRooms.includes(room.number))
+    // return rooms.filter(room => !this.filteredType.includes(room.number))
   }
+  // let availableDates = rooms.filter(room => !this.availableRoomNums
+  //   .includes(room.number))
+  // console.log('available dates customer:', availableDates)
+
+  // let filteredRooms = rooms.filter(room => !this.filteredType
+  //   .forEach(obj => obj.number).includes(room.number))
+  // console.log('filtered rooms customer', filteredRooms)
+  // console.log('filtered type in customer:', this.filteredType)
+
+
+
 
 
   /* original try:

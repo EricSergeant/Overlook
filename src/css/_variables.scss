@@ -17,6 +17,7 @@ $dark-color: #351c10;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 5rem;
+  overflow-y: scroll;
 }
 
 @mixin mainCardStyle {

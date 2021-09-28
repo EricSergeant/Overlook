@@ -18,12 +18,13 @@ import Room from './Rooms'
 
 // eslint-disable-next-line max-len
 let customerData, bookingsData, roomsData, allBookings, allRooms, customer, parsedDate, username;
-let today = "2021/09/25";
+// let today = "2021/09/27";
 let date = new Date();
 let dd = String(date.getDate()).padStart(2, '0')
 let mm = String(date.getMonth() + 1).padStart(2, '0')
 let yyyy = date.getFullYear()
 date = yyyy + '/' + mm + '/' + dd
+let today = date;
 
 
 // *** query selectors ***
@@ -103,13 +104,14 @@ function initData(data) {
 
 function initCustomer() {
   // ** testing version:
-  customer = new Customer(customerData.customers[11]);
+  customer = new Customer(customerData.customers[15]);
   // ** final, live version:
   // customer = new Customer(customerData.customers[username - 1]);
-  console.log('customer on scripts:', customer)
+  // console.log('customer on scripts:', customer)
   customer.createCustomerBookings(bookingsData.bookings)
   customer.createCustomerRooms(roomsData.rooms)
   customer.calcCustomerTotalSpent(bookingsData.bookings, roomsData.rooms)
+  // customer.filterUnavailableRoomsByDate(date, bookingsData.bookings)
   // console.log('instantiated customer', customer)
 }
 
@@ -152,7 +154,6 @@ function renderUserDisplay() {
         domUpdates.dipslayUpcomingBookings(customer)
       }
     }
-
 
   })
   return bookingsType
@@ -204,13 +205,14 @@ function postBooking(userID, date, roomNumber) {
         renderPost()
       }
     })
+    .then(console.log('posted data', initBookings()))
     .catch(err => {
       console.log('POST error thrown:', err)
     })
 }
 
 function renderPost() {
-  console.log('posted data', allBookings)
   gatherData();
+  // console.log('posted data', initBookings())
 }
 
