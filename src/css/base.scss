@@ -35,6 +35,14 @@ h1 {
   font-size: 2rem
 }
 
+main {
+  @include flex-center;
+}
+
+img {
+  margin: 2em;
+}
+
 .hidden {
   display: none;
 }
