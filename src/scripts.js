@@ -10,6 +10,8 @@ import './css/base.scss';
 //(also need to link to it in the index.html)
 // import './images/turing-logo.png'
 import './images/The_Overlook_Hotel_outside.jpg'
+import './images/Overlook_lobby.jpg'
+import './images/Overlook_room.jpg'
 
 import domUpdates from './domUpdates'
 import { customerPromise, bookingsPromise, roomsPromise, postData } from './apiCalls';
