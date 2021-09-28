@@ -27,12 +27,14 @@ describe('Customer', () => {
     expect(customer2.totalSpent).to.equal(0);
   });
   it('Should record the totalSpent of customer', () => {
+    customer2.createCustomerBookings(bookings);
     customer2.calcCustomerTotalSpent(bookings, rooms);
-    expect(customer2.totalSpent).to.equal(835.78)
+    expect(customer2.totalSpent).to.equal('835.78')
   });
   it('Should record the totalSpent of customer', () => {
+    customer2.createCustomerBookings(bookings);
     let total = customer2.calcCustomerTotalSpent(bookings, rooms);
-    expect(total).to.equal(835.78);
+    expect(total).to.equal('835.78');
   });
   it('Should have an empty list of bookings by default', () => {
     expect(customer1.bookings.length).to.equal(0);
