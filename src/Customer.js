@@ -53,7 +53,7 @@ class Customer {
     // console.log('booking room number', bookings.map(obj => obj.date))
     this.unavailableRooms = bookings.filter(booking => booking.date === date.split("-").join("/"))
       .map(booking => booking.roomNumber)
-    console.log('unavailable rooms:', this.unavailableRooms)
+    // console.log('unavailable rooms:', this.unavailableRooms)
     return this.unavailableRooms;
   }
 
