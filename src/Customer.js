@@ -37,10 +37,14 @@ class Customer {
 
   calcCustomerTotalSpent(bookings, rooms) {
     // this.viewCustomerBookings(bookings, rooms);
+    // console.log('booking spent:', bookings.filter(booking => booking.userID === 2))
     return this.totalSpent = rooms.reduce((total, room) => {
       this.bookings.forEach(booking => {
-        if (booking.roomNumber === room.number) {
+        if (booking.roomNumber === room.number &&
+          booking.userID === this.id) {
+          // console.log('checking', booking.roomNumber)
           total += room.costPerNight;
+          // console.log("checking total", booking.roomNumber, total)
         }
       })
       return total;
@@ -53,7 +57,7 @@ class Customer {
     // console.log('booking room number', bookings.map(obj => obj.date))
     this.unavailableRooms = bookings.filter(booking => booking.date === date.split("-").join("/"))
       .map(booking => booking.roomNumber)
-    console.log('unavailable rooms:', this.unavailableRooms)
+    // console.log('unavailable rooms:', this.unavailableRooms)
     return this.unavailableRooms;
   }
 
