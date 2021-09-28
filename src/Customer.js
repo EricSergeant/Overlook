@@ -37,10 +37,14 @@ class Customer {
 
   calcCustomerTotalSpent(bookings, rooms) {
     // this.viewCustomerBookings(bookings, rooms);
+    // console.log('booking spent:', bookings.filter(booking => booking.userID === 2))
     return this.totalSpent = rooms.reduce((total, room) => {
       this.bookings.forEach(booking => {
-        if (booking.roomNumber === room.number) {
+        if (booking.roomNumber === room.number &&
+          booking.userID === this.id) {
+          // console.log('checking', booking.roomNumber)
           total += room.costPerNight;
+          // console.log("checking total", booking.roomNumber, total)
         }
       })
       return total;
