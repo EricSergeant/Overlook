@@ -18,14 +18,14 @@ import Room from './Rooms'
 
 // eslint-disable-next-line max-len
 let customerData, bookingsData, roomsData, allBookings, allRooms, customer, parsedDate, username;
-let today = "2021/09/25";
+// let today = "2021/09/27";
 let date = new Date();
 let dd = String(date.getDate()).padStart(2, '0')
 let mm = String(date.getMonth() + 1).padStart(2, '0')
 let yyyy = date.getFullYear()
 date = yyyy + '/' + mm + '/' + dd
+let today = date;
 
-// console.log('This is the JavaScript entry file - your code begins here.');
 
 // *** query selectors ***
 const viewRooms = document.getElementById('submit-search');
@@ -53,6 +53,8 @@ bookBtn.addEventListener('click', bookRoom)
 profileBtn.addEventListener('click', domUpdates.profileView)
 bookingBtn.addEventListener('click', domUpdates.bookingView)
 logoutBtn.addEventListener('click', domUpdates.logout)
+
+// *** on login ***
 submitLogin.addEventListener('click', (e) => {
   e.preventDefault();
   username = loginForm.username.value;
@@ -71,32 +73,8 @@ submitLogin.addEventListener('click', (e) => {
 })
 
 
-// *** event handlers ***
-// * on load *
-
+// *** on load ***
 // window.addEventListener('load', gatherData);
-
-// *** login ***
-// function checkLogin(event) {
-//   if (!username.value && !password.value) {
-//     preventDefault(event)
-//     console.log('no login info provided')
-//   } else if (password.value !== "overlook2021") {
-//     preventDefault(event)
-//     console.log('wrong password entered')
-//   } else if (username.value !== "customer50") {
-//     preventDefault(event)
-//     console.log('wrong username entered')
-//   } else {
-//     preventDefault(event)
-//     confirmedUser(username.value)
-//   }
-// }
-
-// function confirmedUser(username) {
-//   usernameID = username.slice(8, 10)
-//   usernameID = Number.parseInt(usernameID)
-// }
 
 // *** data initialization ***
 function gatherData() {
@@ -117,34 +95,23 @@ function initData(data) {
   customerData = data[0];
   bookingsData = data[1];
   roomsData = data[2];
-  // console.log('Here is the promise data from scripts file:', data)
 
-  // * instantiate the classes with this *
-  // instantiateRandomUser();
   initCustomer();
   initRooms();
   initBookings();
   renderUserDisplay();
 }
 
-// * note: not using this function, hardcoded user on following function *
-// function instantiateRandomUser() {
-//   let randomUser = customerData.customers[Math
-//     .round(Math.random() * customerData.customers.length)];
-//   // let randomUser = customerData.customers[5];
-//   // console.log('random user result:', randomUser)
-//   // domUpdates.displayUserName(currentUser);
-// }
-
 function initCustomer() {
   // ** testing version:
-  // customer = new Customer(customerData.customers[5]);
+  customer = new Customer(customerData.customers[25]);
   // ** final, live version:
-  customer = new Customer(customerData.customers[username - 1]);
-  console.log('customer on scripts:', customer)
+  // customer = new Customer(customerData.customers[username - 1]);
+  // console.log('customer on scripts:', customer)
   customer.createCustomerBookings(bookingsData.bookings)
   customer.createCustomerRooms(roomsData.rooms)
   customer.calcCustomerTotalSpent(bookingsData.bookings, roomsData.rooms)
+  // customer.filterUnavailableRoomsByDate(date, bookingsData.bookings)
   // console.log('instantiated customer', customer)
 }
 
@@ -154,7 +121,6 @@ function initRooms() {
     let newRoom = new Room(room)
     allRooms.push(newRoom)
   })
-  // console.log('roomData', roomsData)
   // console.log('instantiated rooms', allRooms)
   return allRooms;
 }
@@ -189,7 +155,6 @@ function renderUserDisplay() {
       }
     }
 
-
   })
   return bookingsType
 }
@@ -198,20 +163,17 @@ function renderUserDisplay() {
 function showAvailableRooms(date, type, customer) {
   event.preventDefault()
   parsedDate = date.split("-").join("/");
-  // console.log('customer entry to f:', customer)
-  // console.log('parsed date:', parsedDate)
-  // console.log('today:', today)
-  // console.log('allbookings:', allBookings)
   if (!date) {
-    // eslint-disable-next-line max-len
-    return domUpdates.displayMessage(dateError, "Please choose a date in order to view available rooms.")
+    return domUpdates.displayMessage(dateError,
+      "Please choose a date in order to view available rooms.")
   } else if (parsedDate < today) {
-    return domUpdates.displayMessage(dateError, "Cannot book rooms in the past. Please pick a valid date.")
+    return domUpdates.displayMessage(dateError,
+      "Cannot book rooms in the past. Please pick a valid date.")
   } else {
     // console.log('customer in show:', customer.
     // filterAvailableRoomsByDate(parsedDate, allBookings))
-    // eslint-disable-next-line max-len
-    domUpdates.displayMessage(dateError, "These are the available rooms for that date:")
+    domUpdates.displayMessage(dateError,
+      "These are the available rooms for that date:")
 
     customer.filterUnavailableRoomsByDate(date, bookingsData.bookings);
     customer.filterRoomsByType(roomsData.rooms, selectType.value)
@@ -222,8 +184,6 @@ function showAvailableRooms(date, type, customer) {
 
 
 function bookRoom() {
-  // console.log('hit it')
-  // let closeButton = bookARoom.closest('button')
   let userIDPost = customer.id;
   let datePost = parsedDate;
   // let roomNumberPost = bookingButton.srcElement.id;
@@ -245,14 +205,14 @@ function postBooking(userID, date, roomNumber) {
         renderPost()
       }
     })
+    .then(console.log('posted data', initBookings()))
     .catch(err => {
       console.log('POST error thrown:', err)
     })
 }
 
 function renderPost() {
-  // console.log("ready to render, add re-fetch")
-  console.log('posted data', allBookings)
   gatherData();
+  // console.log('posted data', initBookings())
 }
 
