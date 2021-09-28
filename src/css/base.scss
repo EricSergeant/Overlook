@@ -2,11 +2,11 @@
 @import '_variables';
 @import '_pageViews';
 
-// * {
-//   border: 1px dashed black;
-//   // margin: 0;
-//   // padding: 0;
-// }
+* {
+  border: 1px dashed black;
+  // margin: 0;
+  // padding: 0;
+}
 
 html {
   height: 100vh;
@@ -36,10 +36,6 @@ button:active {
   box-shadow: 0 4px 8px 0 red;
 }
 
-#bookingButton {
-  width: 100%
-}
-
 h1 {
   font-size: 2rem;
   text-shadow: 1px 1px $secondary-color;
@@ -58,7 +54,6 @@ img {
   box-shadow: 0 3px 6px 0 $dark-color;
   border-radius: 5px;
   margin: 2em;
-  
 }
 
 .hidden {
