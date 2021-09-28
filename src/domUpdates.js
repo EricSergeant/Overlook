@@ -125,9 +125,10 @@ const domUpdates = {
       customer.filteredType.forEach(openRooms => {
         availableRooms.innerHTML += `
         <article class="available-booking-card" id="room-${openRooms.number}">
-        <div class="room-image">
-        </div>
         <div class="room-info">
+        <div class="room-image">
+          <img src="./images/Overlook_room.jpg" alt="interior view of Overlook hotel room" height="75%" width="75%">
+        </div>
         <p id="roomBeds">${openRooms.roomType}</p>
         <p id="roomBeds">${openRooms.numBeds} ${openRooms.bedSize}</p>
         <p id="room-cost">$${openRooms.costPerNight} per night</p>
