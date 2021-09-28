@@ -66,13 +66,13 @@ submitLogin.addEventListener('click', (e) => {
   if (username === "customer50" && password === "overlook2021") {
     console.log('successful login')
     // location.reload();
+    username = username.slice(8, 10)
+    console.log('sliced number login:', username)
+    gatherData();
+    domUpdates.login();
   } else {
     console.log('wrong login attempt')
   }
-  username = username.slice(8, 10)
-  console.log('sliced number login:', username)
-  gatherData();
-  domUpdates.login();
 })
 
 
