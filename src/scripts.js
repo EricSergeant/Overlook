@@ -41,6 +41,7 @@ const logoutBtn = document.getElementById('navLogout');
 const submitLogin = document.getElementById('login-form-submit');
 const loginForm = document.getElementById('login-form');
 const clearSearch = document.getElementById('type-filter');
+const loginError = document.getElementById('login-error');
 
 const chosenDate = document.querySelector('#date-picker');
 const chosenType = document.querySelector('select');
@@ -64,14 +65,17 @@ submitLogin.addEventListener('click', (e) => {
   const password = loginForm.password.value;
 
   if (username === "customer50" && password === "overlook2021") {
-    console.log('successful login')
+    // console.log('successful login')
     // location.reload();
     username = username.slice(8, 10)
-    console.log('sliced number login:', username)
+    // console.log('sliced number login:', username)
     gatherData();
     domUpdates.login();
   } else {
-    console.log('wrong login attempt')
+    // console.log('wrong login attempt')
+    loginError.innerHTML = `
+    <p>Incorrect login information, please try again.</p>
+    `
   }
 })
 
