@@ -28,6 +28,11 @@ button {
   border-radius: 5px;
 }
 
+button:active {
+  transform: scale(1.20);
+  box-shadow: 0 4px 8px 0 red;
+}
+
 #bookingButton {
   width: 100%
 }
