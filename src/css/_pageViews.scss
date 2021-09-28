@@ -57,7 +57,9 @@ nav {
 .search-results {
   @include grid;
   // @include mainCardStyle;
+  // margin-bottom: 1em;
   align-items: center;
+  border-bottom: 1px solid $dark-color;
 }
 
 #bookingButton {

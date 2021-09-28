@@ -50,10 +50,7 @@ const domUpdates = {
     // console.log('bookings in domUpdates:\n', customer.bookings)
 
     customer.roomInfo.forEach(myRooms => {
-      // console.log('myRooms:', myRooms.date)
-      // console.log('parsed date:', parsedDate)
-      if (myRooms.date < "2021/09/28") {
-        // console.log('here:', myRooms.date)
+      if (myRooms.date < "2021/09/29") {
         pastBookings.innerHTML += `
           <article class="past-booking-card">
           <div class="room-info">
