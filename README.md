@@ -15,7 +15,7 @@ Login screen for The Overlook Hotel, which requires the user to enter a username
 ![image of login](https://user-images.githubusercontent.com/79122599/135187645-5005284c-9a39-41c5-9654-1b00d22a5a61.png "loging in to the Overlook")
 
 After loging in, users will see a dashboard of their total spending, upcoming booked rooms, and previous booked rooms.  Users can also book new rooms, and are able to sort all available rooms by date and room type: 
-![gif of booking room](https://user-images.githubusercontent.com/79122599/135188760-c32272b7-4be1-4600-a960-e34970611859.gif "booking a room at the Overlook")
+![gif of booking room](https://user-images.githubusercontent.com/79122599/135189050-508850ba-3302-46af-b419-f51dc2d6a356.gif "booking a room at the Overlook")
 
 
 ## <a id="#setup-instructions">Setup Instructions</a>
