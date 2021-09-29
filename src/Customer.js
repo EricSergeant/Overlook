@@ -20,7 +20,6 @@ class Customer {
   }
 
   createCustomerRooms(rooms) {
-    // console.log('all rooms:', rooms);
     let myRoomInfo = rooms.reduce((roomsBooked, room) => {
       this.bookings.forEach(booking => {
         if (booking.roomNumber === room.number) {
@@ -30,21 +29,15 @@ class Customer {
       return roomsBooked;
     }, []);
     this.roomInfo = myRoomInfo;
-    // console.log('myRoomInfo:', this.roomInfo);
     return myRoomInfo;
   }
 
-
   calcCustomerTotalSpent(bookings, rooms) {
-    // this.viewCustomerBookings(bookings, rooms);
-    // console.log('booking spent:', bookings.filter(booking => booking.userID === 2))
     return this.totalSpent = rooms.reduce((total, room) => {
       this.bookings.forEach(booking => {
         if (booking.roomNumber === room.number &&
           booking.userID === this.id) {
-          // console.log('checking', booking.roomNumber)
           total += room.costPerNight;
-          // console.log("checking total", booking.roomNumber, total)
         }
       })
       return total;
@@ -52,17 +45,13 @@ class Customer {
   }
 
   filterUnavailableRoomsByDate(date, bookings) {
-    // console.log('date in filter rooms', date)
-    // console.log('fixed date in customer', date.split("-").join("/"))
-    // console.log('booking room number', bookings.map(obj => obj.date))
-    this.unavailableRooms = bookings.filter(booking => booking.date === date.split("-").join("/"))
+    this.unavailableRooms = bookings.filter(booking => booking
+      .date === date.split("-").join("/"))
       .map(booking => booking.roomNumber)
-    // console.log('unavailable rooms:', this.unavailableRooms)
     return this.unavailableRooms;
   }
 
   filterRoomsByType(rooms, roomType) {
-    // console.log('room type in customer:', roomType)
     if (roomType === 'all') {
       this.filteredType = this.getAvailableRooms(rooms)
     } else {
@@ -70,14 +59,11 @@ class Customer {
       this.filteredType = availableRooms
         .filter(roomObj => roomObj.roomType === roomType)
       this.availableRoomTypes = this.filteredType.map(room => room.number)
-      // console.log('room num by type', this.filteredType)
       return this.filteredType
     }
   }
 
   getAvailableRooms(rooms) {
-    // * original below *
-    // return rooms.filter(room => !this.availableRoomNums.includes(room.number))
     return rooms.filter(room => !this.unavailableRooms.includes(room.number))
   }
 
