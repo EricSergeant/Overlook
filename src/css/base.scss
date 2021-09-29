@@ -1,27 +1,22 @@
-/* This is an example of how to import a partial scss file*/
 @import '_variables';
 @import '_pageViews';
-
-// * {
-//   border: 1px dashed black;
-//   // margin: 0;
-//   // padding: 0;
-// }
 
 html {
   height: 100vh;
   font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  overscroll-behavior: none;
 }
 
 body {
   background: $primary-background;
   min-height: 100vh;
-  overflow: scroll;
+  margin: 0;
+  overscroll-behavior: none;
 }
 
 button {
   cursor: pointer; 
-  // padding: 0.5em;
   margin: 1em;
   background-color: $highlight-color;
   box-shadow: 0 2px 4px 0 $dark-color;
@@ -31,10 +26,6 @@ button {
 button:active {
   transform: scale(1.20);
   box-shadow: 0 4px 8px 0 red;
-}
-
-#bookingButton {
-  width: 100%
 }
 
 h1 {
@@ -55,7 +46,6 @@ img {
   box-shadow: 0 3px 6px 0 $dark-color;
   border-radius: 5px;
   margin: 2em;
-  
 }
 
 .hidden {

@@ -15,7 +15,6 @@ const domUpdates = {
 
   displayUserName(customer) {
     userMsg.innerText = `Greetings ${customer.name}!`
-
   },
 
   displayAmountSpent(customer) {
@@ -43,22 +42,16 @@ const domUpdates = {
       </article>
       `;
     }
-    // console.log('roomInfo in domUpdates:\n', customer.roomInfo)
-    // customer.roomInfo.forEach(item => {
-    //   console.log('items:', item.date)
-    // })
-    // console.log('bookings in domUpdates:\n', customer.bookings)
 
     customer.roomInfo.forEach(myRooms => {
-      // console.log('myRooms:', myRooms.date)
-      // console.log('parsed date:', parsedDate)
-      if (myRooms.date < "2021/09/28") {
-        // console.log('here:', myRooms.date)
+      if (myRooms.date < "2021/09/29") {
         pastBookings.innerHTML += `
           <article class="past-booking-card">
           <div class="room-info">
             <div class="room-image">
-              <img src="./images/Overlook_room.jpg" alt="interior view of Overlook hotel room" height="50%" width="75%">
+              <img src="./images/Overlook_room.jpg" 
+              alt="interior view of Overlook hotel room" 
+              height="75%" width="75%">
             </div>
           <p id="roomDate">${myRooms.date}</p>
           <p id="roomType">${myRooms.room.roomType}</p>
@@ -83,16 +76,14 @@ const domUpdates = {
       </article>
       `;
     }
-    // console.log(customer.roomInfo)
     customer.roomInfo.forEach(myRooms => {
-      // console.log('myRooms:', myRooms.date)
-      // console.log('parsed date:', parsedDate)
       if (myRooms.date > "2021/09/28") {
         upComingStays.innerHTML += `
       <article class="upcoming-booking-card">
       <div class="room-info">
         <div class="room-image">
-          <img src="./images/Overlook_room.jpg" alt="interior view of Overlook hotel room" height="75%" width="75%">
+          <img src="./images/Overlook_room.jpg" 
+          alt="interior view of Overlook hotel room" height="75%" width="75%">
         </div>
         <p id="roomDate">Your upcoming visit for ${myRooms.date}</p>
         <p id="roomBeds">${myRooms.room.roomType}</p>
@@ -113,25 +104,26 @@ const domUpdates = {
 
   displayRoomsAvailable(customer) {
     availableRooms.innerHTML = '';
-    // console.log('customer in DOM', customer)
-    // console.log('available room data:', rooms)
-    // console.log('available in DOM:', customer.filteredType)
     if (!customer.filteredType.length) {
       availableRooms.innerHTML += `
       <p class="error-no-rooms">
-      So sorry, there are no more rooms available for that date/type.  Please adjust your search and try again.</p>
+      So sorry, there are no more rooms available for that date/type.  
+      Please adjust your search and try again.</p>
       `
     } else {
       customer.filteredType.forEach(openRooms => {
         availableRooms.innerHTML += `
         <article class="available-booking-card" id="room-${openRooms.number}">
-        <div class="room-image">
-        </div>
         <div class="room-info">
+        <div class="room-image">
+          <img src="./images/Overlook_room.jpg" 
+          alt="interior view of Overlook hotel room" height="75%" width="75%">
+        </div>
         <p id="roomBeds">${openRooms.roomType}</p>
         <p id="roomBeds">${openRooms.numBeds} ${openRooms.bedSize}</p>
         <p id="room-cost">$${openRooms.costPerNight} per night</p>
-        <button class="booking-button" id="bookingButton-${openRooms.number}">Click this room to book it!</button>
+        <button class="booking-button" id="bookingButton-${openRooms.number}">
+        Click this room to book it!</button>
         </div>
         </article>
         `;
@@ -140,24 +132,20 @@ const domUpdates = {
   },
 
   profileView() {
-    console.log('click profileView in domUpdates')
     profilePage.classList.remove('hidden')
     findRoom.classList.add('hidden')
   },
 
   bookingView() {
-    console.log('click bookingView in domUpdates')
     findRoom.classList.remove('hidden')
     profilePage.classList.add('hidden')
   },
 
   navView() {
-    console.log('click navView in domUpdates')
     navMenu.classList.remove('hidden')
   },
 
   logout() {
-    console.log('click logout in domUpdates')
     logOut.classList.remove('hidden')
     findRoom.classList.add('hidden')
     profilePage.classList.add('hidden')

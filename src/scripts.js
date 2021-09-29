@@ -1,27 +1,24 @@
-// *** import and variables ***
-
 // This is the JavaScript entry file - your code begins here
 // Do not delete or rename this file ********
 
-// An example of how you tell webpack to use a CSS (SCSS) file
 import './css/base.scss';
 
-// An example of how you tell webpack to use an image 
-//(also need to link to it in the index.html)
-// import './images/turing-logo.png'
 import './images/The_Overlook_Hotel_outside.jpg'
 import './images/Overlook_lobby.jpg'
 import './images/Overlook_room.jpg'
 
 import domUpdates from './domUpdates'
-import { customerPromise, bookingsPromise, roomsPromise, postData } from './apiCalls';
+import {
+  customerPromise, bookingsPromise, roomsPromise,
+  postData
+} from './apiCalls';
 import Customer from './Customer'
 import Booking from './Booking'
 import Room from './Rooms'
 
-// eslint-disable-next-line max-len
-let customerData, bookingsData, roomsData, allBookings, allRooms, customer, parsedDate, username;
-// let today = "2021/09/27";
+
+let customerData, bookingsData, roomsData, allBookings,
+  allRooms, customer, parsedDate, username;
 let date = new Date();
 let dd = String(date.getDate()).padStart(2, '0')
 let mm = String(date.getMonth() + 1).padStart(2, '0')
@@ -41,6 +38,7 @@ const logoutBtn = document.getElementById('navLogout');
 const submitLogin = document.getElementById('login-form-submit');
 const loginForm = document.getElementById('login-form');
 const clearSearch = document.getElementById('type-filter');
+const loginError = document.getElementById('login-error');
 
 const chosenDate = document.querySelector('#date-picker');
 const chosenType = document.querySelector('select');
@@ -50,8 +48,8 @@ const selectType = document.querySelector('#type-filter');
 
 
 // *** event listeners ***
-// eslint-disable-next-line max-len
-viewRooms.addEventListener('click', () => showAvailableRooms(chosenDate.value, chosenType.value, customer))
+viewRooms.addEventListener('click', () =>
+  showAvailableRooms(chosenDate.value, chosenType.value, customer))
 bookBtn.addEventListener('click', bookRoom)
 profileBtn.addEventListener('click', domUpdates.profileView)
 bookingBtn.addEventListener('click', domUpdates.bookingView)
@@ -64,20 +62,15 @@ submitLogin.addEventListener('click', (e) => {
   const password = loginForm.password.value;
 
   if (username === "customer50" && password === "overlook2021") {
-    console.log('successful login')
-    // location.reload();
+    username = username.slice(8, 10)
+    gatherData();
+    domUpdates.login();
   } else {
-    console.log('wrong login attempt')
+    loginError.innerHTML = `
+    <p>Incorrect login information, please try again.</p>
+    `
   }
-  username = username.slice(8, 10)
-  console.log('sliced number login:', username)
-  gatherData();
-  domUpdates.login();
 })
-
-
-// *** on load ***
-// window.addEventListener('load', gatherData);
 
 // *** data initialization ***
 function gatherData() {
@@ -107,15 +100,12 @@ function initData(data) {
 
 function initCustomer() {
   // ** testing version:
-  customer = new Customer(customerData.customers[11]);
+  // customer = new Customer(customerData.customers[6]);
   // ** final, live version:
-  // customer = new Customer(customerData.customers[username - 1]);
-  // console.log('customer on scripts:', customer)
+  customer = new Customer(customerData.customers[username - 1]);
   customer.createCustomerBookings(bookingsData.bookings)
   customer.createCustomerRooms(roomsData.rooms)
   customer.calcCustomerTotalSpent(bookingsData.bookings, roomsData.rooms)
-  // customer.filterUnavailableRoomsByDate(date, bookingsData.bookings)
-  // console.log('instantiated customer', customer)
 }
 
 function initRooms() {
@@ -124,7 +114,6 @@ function initRooms() {
     let newRoom = new Room(room)
     allRooms.push(newRoom)
   })
-  // console.log('instantiated rooms', allRooms)
   return allRooms;
 }
 
@@ -134,7 +123,6 @@ function initBookings() {
     let newBooking = new Booking(booking)
     allBookings.push(newBooking)
   })
-  // console.log('instantiated bookings', allBookings)
   return allBookings
 }
 
@@ -144,20 +132,14 @@ function renderUserDisplay() {
   domUpdates.displayPastBookings(customer)
   domUpdates.dipslayUpcomingBookings(customer)
 
-  // console.log('check bookings here:', customer.bookings)
   let bookingsType = customer.bookings.forEach(booking => {
-    // console.log('booking.date:', booking.date)
-    // console.log('date compare:', booking.date < date)
-
     if (booking.date < date) {
       domUpdates.displayPastBookings(customer)
     } else {
       if (booking.date > date) {
-        // console.log('upcoming booking:', booking)
         domUpdates.dipslayUpcomingBookings(customer)
       }
     }
-
   })
   return bookingsType
 }
@@ -173,26 +155,21 @@ function showAvailableRooms(date, type, customer) {
     return domUpdates.displayMessage(dateError,
       "Cannot book rooms in the past. Please pick a valid date.")
   } else {
-    // console.log('customer in show:', customer.
-    // filterAvailableRoomsByDate(parsedDate, allBookings))
     domUpdates.displayMessage(dateError,
       "These are the available rooms for that date:")
 
     customer.filterUnavailableRoomsByDate(date, bookingsData.bookings);
     customer.filterRoomsByType(roomsData.rooms, selectType.value)
     domUpdates.displayRoomsAvailable(customer)
-
   }
 }
-
 
 function bookRoom() {
   let userIDPost = customer.id;
   let datePost = parsedDate;
-  // let roomNumberPost = bookingButton.srcElement.id;
-  let roomNumberPost = event.target.closest('.available-booking-card').id.split("-")[1];
+  let roomNumberPost = event.target
+    .closest('.available-booking-card').id.split("-")[1];
   let fixedRoom = Number(roomNumberPost)
-  // console.log('booking room info:', userIDPost, datePost, roomNumberPost)
   domUpdates.profileView();
   clearSearch.selectedIndex = 0;
   postBooking(userIDPost, datePost, fixedRoom);
@@ -216,6 +193,5 @@ function postBooking(userID, date, roomNumber) {
 
 function renderPost() {
   gatherData();
-  // console.log('posted data', initBookings())
 }
 

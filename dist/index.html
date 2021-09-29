@@ -7,7 +7,6 @@
   <title>The Overlook Hotel</title>
 </head>
 <body>
-  <!-- <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px"> -->
   <header>
     <div class="nav-title-div">
       <h1>The Overlook Hotel</h1>
@@ -15,25 +14,18 @@
     <nav class="all-nav-buttons hidden" id="allNavButtons">
       <button class="nav-button" id="navBooking">Make New Booking</button>
       <button class="nav-button" id="navProfile">My Profile</button>
-      <!-- <button class="nav-button hidden" id="navLogin">Log In</button> -->
       <button class="nav-button" id="navLogout">Log Out</button>
     </nav>
- 
   </header>
   <main>
     <section class="login-page" id="login-page">
-      <!-- <div class="login-container">
-        <label for="uname"><b>Username</b></label>
-        <input id="uname" type="text" placeholder="Enter Username" name="uname" required>
-        <label for="psw"><b>Password</b></label>
-        <input id="psw" type="password" placeholder="Enter Password" name="psw" required>  
-        <button id="submitLogin" type="submit">Login</button>
-      </div> -->
       <form id="login-form">
-        <input type="text" name="username" id="username-field" class="login-form-field" placeholder="Username">
-        <input type="password" name="password" id="password-field" class="login-form-field" placeholder="Password">
+        <input aria-label="username"type="text" name="username" id="username-field" class="login-form-field" placeholder="Username">
+        <input aria-label="password" type="password" name="password" id="password-field" class="login-form-field" placeholder="Password">
         <input type="submit" value="Login" id="login-form-submit">
       </form>
+      <div class="login-error" id="login-error">        
+      </div>
       <img src="./images/The_Overlook_Hotel_outside.jpg" alt="outside view of front of Overlook Hotel"
       height="50%" width="50%">
     </section>
@@ -49,9 +41,7 @@
         <article class="search-results" id="pastStays"></article>
     </section>
     <section class="booking-page" id="booking-page">
-
     </section>
-
     <section class="new-booking hidden" id="new-book-view">
       <form class="booking-form">
         <div class="room-date-picker" id="datePickerDiv">
@@ -67,7 +57,6 @@
             <option value="junior suite">Junior Suite</option>
             <option value="single room">Single Room</option>
           </select>
-
         </section>
         <button class="submit" id="submit-search">View Available Rooms</button>
       </form>
@@ -78,7 +67,6 @@
       <img src="./images/Overlook_lobby.jpg" alt="interior view of Overlook lobby"
       height="50%" width="50%">
     </section>
-
   </main>
   <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
   <script src="bundle.js"></script>
