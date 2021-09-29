@@ -15,6 +15,7 @@ Login screen for The Overlook Hotel, which requires the user to enter a username
 ![image of login](https://user-images.githubusercontent.com/79122599/135187645-5005284c-9a39-41c5-9654-1b00d22a5a61.png "loging in to the Overlook")
 
 After loging in, users will see a dashboard of their total spending, upcoming booked rooms, and previous booked rooms.  Users can also book new rooms, and are able to sort all available rooms by date and room type: 
+
 ![gif of booking room](https://user-images.githubusercontent.com/79122599/135189050-508850ba-3302-46af-b419-f51dc2d6a356.gif "booking a room at the Overlook")
 
 
@@ -41,9 +42,9 @@ Log in with the following information:
 - Lighthouse and WAVE via Chrome
 
 ## <a id="#contributors">Contributors</a>
-[Eric Sergeant](https://github.com/EricSergeant)  
-[Will McGuire](https://github.com/wmcguire18) Code review
-[Hannah Hudson](https://github.com/hannahhch) Project Managment
+Primary Author: [Eric Sergeant](https://github.com/EricSergeant); 
+  Code Reviewer: [Will McGuire](https://github.com/wmcguire18);
+  Project Manager: [Hannah Hudson](https://github.com/hannahhch)
 
 ## <a id="#challenges-and-wins">Challenges and Wins</a>
 This was the first solo project to use fetch to both retrieve data from the API and update the API with information flowing back to it.  It was also challenging to keep track of the various class constructors, the methods of each, and the ways they all interacted with each other.  This was also my introduction to SCSS, which was it's own learning curve.
