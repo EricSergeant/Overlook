@@ -35,7 +35,7 @@ Log in with the following information:
 
 ## <a id="#contributors">Contributors</a>
 [Eric Sergeant](https://github.com/EricSergeant)  
-[Will](https://github.com/) Code review
+[Will McGuire](https://github.com/wmcguire18) Code review
 [Hannah] Project Managment
 
 ## <a id="#challenges-and-wins">Challenges and Wins</a>
