@@ -1,14 +1,8 @@
-// *** import and variables ***
-
 // This is the JavaScript entry file - your code begins here
 // Do not delete or rename this file ********
 
-// An example of how you tell webpack to use a CSS (SCSS) file
 import './css/base.scss';
 
-// An example of how you tell webpack to use an image 
-//(also need to link to it in the index.html)
-// import './images/turing-logo.png'
 import './images/The_Overlook_Hotel_outside.jpg'
 import './images/Overlook_lobby.jpg'
 import './images/Overlook_room.jpg'
@@ -25,7 +19,6 @@ import Room from './Rooms'
 
 let customerData, bookingsData, roomsData, allBookings,
   allRooms, customer, parsedDate, username;
-// let today = "2021/09/27";
 let date = new Date();
 let dd = String(date.getDate()).padStart(2, '0')
 let mm = String(date.getMonth() + 1).padStart(2, '0')
@@ -107,9 +100,9 @@ function initData(data) {
 
 function initCustomer() {
   // ** testing version:
-  customer = new Customer(customerData.customers[6]);
+  // customer = new Customer(customerData.customers[6]);
   // ** final, live version:
-  // customer = new Customer(customerData.customers[username - 1]);
+  customer = new Customer(customerData.customers[username - 1]);
   customer.createCustomerBookings(bookingsData.bookings)
   customer.createCustomerRooms(roomsData.rooms)
   customer.calcCustomerTotalSpent(bookingsData.bookings, roomsData.rooms)
@@ -147,7 +140,6 @@ function renderUserDisplay() {
         domUpdates.dipslayUpcomingBookings(customer)
       }
     }
-
   })
   return bookingsType
 }
@@ -169,15 +161,14 @@ function showAvailableRooms(date, type, customer) {
     customer.filterUnavailableRoomsByDate(date, bookingsData.bookings);
     customer.filterRoomsByType(roomsData.rooms, selectType.value)
     domUpdates.displayRoomsAvailable(customer)
-
   }
 }
-
 
 function bookRoom() {
   let userIDPost = customer.id;
   let datePost = parsedDate;
-  let roomNumberPost = event.target.closest('.available-booking-card').id.split("-")[1];
+  let roomNumberPost = event.target
+    .closest('.available-booking-card').id.split("-")[1];
   let fixedRoom = Number(roomNumberPost)
   domUpdates.profileView();
   clearSearch.selectedIndex = 0;
