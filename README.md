@@ -9,14 +9,14 @@
   - <a href="#future-additions">Future Additions</a>
 
 ## <a id="#overview">Overview</a>
-This one-week project is the final solo challenge in Module 2 of the Turing School of Software and Design Front-End program. THe goal of this project was to build a hotel booking app that demonstrates the use of Object Oriented Programming, APIs to send and receive data, a solid code review process, and robust testing suites to test all functionality.  The app allows users to log in and see past and upcoming bookings, track the total amount they've spent, as well as create new bookings. 
+This five-day project is the final solo challenge in Module 2 of the Turing School of Software and Design Front-End program. THe goal of this project was to build a hotel booking app that demonstrates the use of Object Oriented Programming, APIs to send and receive data, a solid code review process, and robust testing suites to test all functionality.  The app allows users to log in and see past and upcoming bookings, track the total amount they've spent, as well as create new bookings. 
 
 Login screen for The Overlook Hotel, which requires the user to enter a username and password to access the app:
 ![image of login](https://user-images.githubusercontent.com/79122599/135187645-5005284c-9a39-41c5-9654-1b00d22a5a61.png "loging in to the Overlook")
 
 After loging in, users will see a dashboard of their total spending, upcoming booked rooms, and previous booked rooms.  Users can also book new rooms, and are able to sort all available rooms by date and room type: 
 
-![gif of booking room](https://user-images.githubusercontent.com/79122599/135189050-508850ba-3302-46af-b419-f51dc2d6a356.gif "booking a room at the Overlook")
+![gif of booking room](https://media.giphy.com/media/4iFN35Lat3Xf6kAzhG/giphy.gif "booking a room at the Overlook")
 
 
 ## <a id="#setup-instructions">Setup Instructions</a>
