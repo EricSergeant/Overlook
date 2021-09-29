@@ -1,4 +1,4 @@
-<h1 align="center"> The Overlook Hotel </h1>
+<h1> The Overlook Hotel </h1>
 
 ## Table of Contents
   - <a href="#overview">Overview</a>
@@ -36,9 +36,12 @@ Log in with the following information:
 ## <a id="#contributors">Contributors</a>
 [Eric Sergeant](https://github.com/EricSergeant)  
 [Will McGuire](https://github.com/wmcguire18) Code review
-[Hannah] Project Managment
+[Hannah Hudson](https://github.com/hannahhch) Project Managment
 
 ## <a id="#challenges-and-wins">Challenges and Wins</a>
+This was the first solo project to use fetch to both retrieve data from the API and update the API with information flowing back to it.  It was also challenging to keep track of the various class constructors, the methods of each, and the ways they all interacted with each other.  This was also my introduction to SCSS, which was it's own learning curve.
+
+Overall, I was able to successfully implement the MVP for this project, including the new challenging material such as GET/POST and SCSS.  I was also able to get a fully-tabable page with 100% Lighthouse accesssibility and no ARIA errors/issue.  Using project and issue tracking on GitHub, I was able to keep track of all iterations, user stories, and bugs to successfully complete the project in a very limited amount of time.  
 
 ## <a id="#future-additions">Future Additions</a>
 - Refactoring: Since this was only a week-long project, there are opportunities for improvement.  Specificaly, I would like to improve the general layout and design of the app.  I would also like to move from `innerHTML` adjustments to using `Node.appendChild()` instead.
@@ -48,13 +51,6 @@ Log in with the following information:
 
 
 
-
 # Webpack Starter Kit
-
-## Clone This Repo
-
-To verify that it is setup correctly, run `npm start` in your terminal. Go to `http://localhost:8080/` and you should see a page with some `h1` text, Turing logo image and a beautiful gradient background. If that's the case, you're good to go. Enter `control + c` in your terminal to stop the server at any time.
-
 Here is a video that walks through some information about [import and export](https://www.youtube.com/watch?v=_3oSWwapPKQ). There are a lot of resources out there about `import` and `export`, and resources will sometimes call them `ES6 modules`. It's something you will see in React and beyond.
-
 
