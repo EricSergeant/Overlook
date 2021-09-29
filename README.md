@@ -11,6 +11,13 @@
 ## <a id="#overview">Overview</a>
 This one-week project is the final solo challenge in Module 2 of the Turing School of Software and Design Front-End program. THe goal of this project was to build a hotel booking app that demonstrates the use of Object Oriented Programming, APIs to send and receive data, a solid code review process, and robust testing suites to test all functionality.  The app allows users to log in and see past and upcoming bookings, track the total amount they've spent, as well as create new bookings. 
 
+Login screen for The Overlook Hotel
+![image of login](https://user-images.githubusercontent.com/79122599/135187645-5005284c-9a39-41c5-9654-1b00d22a5a61.png "loging in to the Overlook")
+
+After loging in, users will see a dashboard of their total spending, upcoming booked rooms, and previous booked rooms.  Users can also book new rooms, and are able to sort all available rooms by date and room type.  
+![gif of booking room](https://media.giphy.com/media/eS20hAVvLiD4WvfvAn/giphy.gif "booking a room at the Overlook")
+
+
 ## <a id="#setup-instructions">Setup Instructions</a>
 ### Set up the API
 First, open a Terminal window and clone down the following API repo:   .  Then, in the terminal, type `npm install` and `npm start` to start the API.
@@ -46,11 +53,3 @@ Overall, I was able to successfully implement the MVP for this project, includin
 ## <a id="#future-additions">Future Additions</a>
 - Refactoring: Since this was only a week-long project, there are opportunities for improvement.  Specificaly, I would like to improve the general layout and design of the app.  I would also like to move from `innerHTML` adjustments to using `Node.appendChild()` instead.
 - Manager login: Adding a manager login, along with the ability to delete bookings via the API.
-
-
-
-
-
-# Webpack Starter Kit
-Here is a video that walks through some information about [import and export](https://www.youtube.com/watch?v=_3oSWwapPKQ). There are a lot of resources out there about `import` and `export`, and resources will sometimes call them `ES6 modules`. It's something you will see in React and beyond.
-
